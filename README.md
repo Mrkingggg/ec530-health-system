@@ -1,4 +1,4 @@
-# ec530 project2
+# ec530 final project
 
 ### ALL APIs needed defined in .yaml files ... within the repository
 
@@ -144,14 +144,15 @@
 ## app.py
 
 ### Implement restful api to interact with database for :
-  - User management
-  - Authentication/Authorization
-  - Reports
-  - Notifications
-  - Data reading / Device Interface
 
+- User management
+- Authentication/Authorization
+- Reports
+- Notifications
+- Data reading / Device Interface
 
 ### Build a queue to process report generation
+
 #### Components
 
 - **Report Queue (`report_queue`)**: A thread-safe queue for storing pending report generation tasks.
@@ -170,26 +171,31 @@
 
 <img width="1101" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/e3051a3b-7f61-49e7-bebc-95b90fb8de0d">
 
-
 ### Build a queue to process notification generation
+
 #### Documentation:
-   The notification queue system in the Flask application handles asynchronous notification delivery. It uses Python's Queue to manage and process notifications in a thread-safe manner.
+
+The notification queue system in the Flask application handles asynchronous notification delivery. It uses Python's Queue to manage and process notifications in a thread-safe manner.
+
 #### Components:
-   - Notification Queue: A queue that stores notifications as dictionaries, each containing a user ID and message.
-   - Producer: The system component that generates and enqueues notifications, typically triggered by specific API calls.
-   - Consumer: A background thread that dequeues and processes notifications from the queue.
+
+- Notification Queue: A queue that stores notifications as dictionaries, each containing a user ID and message.
+- Producer: The system component that generates and enqueues notifications, typically triggered by specific API calls.
+- Consumer: A background thread that dequeues and processes notifications from the queue.
+
 #### Workflow
-   - Enqueuing: Notifications are created and added to the queue in response to certain events, through the notify() endpoint.
-   - Processing: A background thread continuously checks the queue for new notifications, processing and "sending" each one by printing a message to the console.
+
+- Enqueuing: Notifications are created and added to the queue in response to certain events, through the notify() endpoint.
+- Processing: A background thread continuously checks the queue for new notifications, processing and "sending" each one by printing a message to the console.
 
 ### Unit Test Result for Notification Queue :
 
 <img width="1109" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/aac6e0ae-f83a-4444-bc00-a71c7ad1c1ff">
 
 #### gitc cmd with remote repos:
+
 - git clone URL
 - git pull origin main
 - git add . / file names
 - git commit (files) -m "xxx"
 - git push origin main (to remote repo)
-
