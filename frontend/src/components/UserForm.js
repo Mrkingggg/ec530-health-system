@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { addUser } from '../services/userService';
 const Role = {
-    PATIENT: 'patient',
-    DOCTOR: 'doctor',
-    ADMIN: 'admin'
+    PATIENT: 1,
+    DOCTOR: 2,
+    ADMIN: 3
+};
+const Gender = {
+    FEMALE: 'female',
+    MALE: 'male',
+    OTHER: 'other'
 };
 
 const UserForm = () => {
@@ -61,12 +66,25 @@ const UserForm = () => {
             <label>
                 Gender:
                 <select value={userData.gender} onChange={handleChange}>
-                    <option value = {Role.PATIENT}>Patient</option>
-                    <option value = {Role.ADMIN}>Admin</option>
-                    <option value = {Role.DOCTOR}>Doctor</option>
+                    <option value = {Gender.FEMALE}>Patient</option>
+                    <option value = {Gender.MALE}>Admin</option>
+                    <option value = {Gender.OTHER}>Doctor</option>
                 </select>
             </label>
+            <br/>
+            <br/>
+            <label>
+                Role(s):
+            <br/>
+            <br/>
 
+                <select multiple={true} onChange={handleChange}>
+                    <option value = {Role.ADMIN}>Admin</option>
+                    <option value = {Role.DOCTOR}>Doctor</option>
+                    <option value = {Role.PATIENT}>Patient</option>
+                </select>
+            </label>
+            <br/>
             <br/>
             <button type="submit">Add User</button>
         </form>

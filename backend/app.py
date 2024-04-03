@@ -10,6 +10,8 @@ import threading
 import uuid
 from flask_cors import CORS
 
+# pip install -r requirements.txt -- apply the requirements.txt in various environments.
+
 app = Flask(__name__)
 CORS(app)
 
@@ -123,19 +125,19 @@ def add_user():
         db.session.rollback()
         return jsonify({"error": e}), 500
 
-@app.route('/users/changeRole', methods=['PUT'])
+@app.route('/api/users/changeRole', methods=['PUT'])
 def chg_role():
     data = request.get_json()
     userId = data.get('userId')
     newRoles = data.get('newRoles',[])
     if not all([userId, newRoles]):
         return jsonify({"bad requests":"missing components"}),400
-    if not Users.query.filter(userId = userId).first():
-        return jsonify({"bad request":"user does not exist"}),400
+    # if not Users.query.filter(userId = userId).first():
+    #     return jsonify({"bad request":"user does not exist"}),400
     
     try:
-        usr = Users.query.filter(userId = userId).first()
-        usr.roles=[]
+        usr = Users.query.get_or_404(userId)
+        usr.roles.clear()
         for role_id in newRoles:
             roleName = Role.query.get(role_id)
             if roleName:
