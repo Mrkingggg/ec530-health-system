@@ -1,6 +1,6 @@
 export const addUser = async (userData) => {
     try {
-        const response = await fetch('/api/users/add', {
+        const response = await fetch('http://127.0.0.1:5000/api/users/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
