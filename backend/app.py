@@ -8,8 +8,11 @@ from flask_marshmallow import Marshmallow
 from queue import Queue
 import threading
 import uuid
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
+
 
 #connect to my database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root1234@localhost:3306/HealthApp'

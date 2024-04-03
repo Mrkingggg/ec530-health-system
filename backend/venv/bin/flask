@@ -1,4 +1,4 @@
-#!/Volumes/D/BU_Courses/2024Spring/ec530/ec530-finalproj-healthsys/venv/bin/python3
+#!/Volumes/D/BU_Courses/2024Spring/ec530/ec530-finalproj-healthsys/backend/venv/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys
