@@ -199,3 +199,7 @@ The notification queue system in the Flask application handles asynchronous noti
 - git add . / file names
 - git commit (files) -m "xxx"
 - git push origin main (to remote repo)
+
+### Frontend:
+
+1. add user

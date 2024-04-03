@@ -39,10 +39,10 @@ const UserForm = () => {
                 <input type="text" name="username" value = {userData.username} onChange={handleChange}/>
             </label>
             <br/>
-            <lable>
+            <label>
                 Password:
                 <input type="text" name="password" value={userData.password} onChange={handleChange} ></input>
-            </lable>
+            </label>
             <br/>
             <label>
                 Email:
@@ -58,14 +58,14 @@ const UserForm = () => {
                 <input type = "text" name="fullname" value = {userData.fullname} onChange={handleChange}/>
             </label>
             <br/>
-            <lable>
+            <label>
                 Gender:
                 <select value={userData.gender} onChange={handleChange}>
                     <option value = {Role.PATIENT}>Patient</option>
                     <option value = {Role.ADMIN}>Admin</option>
                     <option value = {Role.DOCTOR}>Doctor</option>
                 </select>
-            </lable>
+            </label>
 
             <br/>
             <button type="submit">Add User</button>
