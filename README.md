@@ -203,24 +203,31 @@ The notification queue system in the Flask application handles asynchronous noti
 ### Frontend:
 
 1. add user
+<br/>
 
 ![image](https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/194d2562-7356-49ef-acbd-0be5e4b3ba65)
 
 ![image](https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/df2e2d9f-b9ad-4ce4-a3ee-2141d8bb112d)
+<br/>
+<br/>
 
 2. change user's roles
 <img width="1439" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/eeea4306-3174-4a37-9be0-e8f402d59268">
+<br/>
 
 <img width="701" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/b072a896-b701-4249-8387-ed8081a6b6cd">
+<br/>
+<br/>
 
 
 3. Home Page & Login
 Start with Login or Create an acoount.
 - Login: Directly input username and password. If both are correct, the web jumps to user page.
 - Create a new account: jump to create page.
-
 <br/>
 <img width="1226" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/4ec51d57-9767-42f7-a255-3224cc268cfe">
+<br/>
+<br/>
 
 
 4. Create new accounts.
@@ -229,6 +236,8 @@ Fill all fields ( role's field is multiple selection ). Click Add User and jump 
 <br/>
 <img width="1051" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/c7a9177b-60da-4e1f-abb1-39273d1052be">
 
+<br/>
+<br/>
 
 5.User's Page
 More functions to be added. ( Generate reports, review personal information, receive notifications, make appointments and etc..)
@@ -236,10 +245,12 @@ More functions to be added. ( Generate reports, review personal information, rec
 <br/>
 <img width="905" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/096c6fce-79a6-43e7-a4ef-6ba978e6335c">
 
+<br/>
+<br/>
 
 6. Change Roles
 Simple version now. Support input userId and select new Roles.
-
+<br/>
 
 <img width="804" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/f87bd6a5-9afe-4c9c-a591-430e7184c03c">
 
