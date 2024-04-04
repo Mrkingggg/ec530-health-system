@@ -36,3 +36,42 @@ export const changeRole = async (userId, newRoles) => {
     }
 };
 
+export const login = async(username, password) =>{
+    try{
+        const response = await fetch('http://127.0.0.1:5000/api/auth/login', {
+            method: 'POST',
+            headers:{
+                'Content-Type':'application/json',
+            },
+            body: JSON.stringify({ username, password })
+        });
+        const data = await response.json();
+        
+        if(!response.ok){
+            throw new Error(data.error || data.bad_request || 'Login failed');
+        }
+        return data;
+    }catch(error){
+        throw error;
+    }
+};
+
+export const logout = async() =>{
+    try {
+        const response = await fetch('/api/auth/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Logout failed');
+        }
+
+        return true; // 登出成功
+    } catch (error) {
+        console.error('Logout error:', error);
+        throw error;
+    }
+};

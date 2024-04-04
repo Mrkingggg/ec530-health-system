@@ -19,7 +19,8 @@ CORS(app)
 #connect to my database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root1234@localhost:3306/HealthApp'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['JWT_SECRET_KEY'] = '2fdbf97d3094c3c8896e173f16c55fcb'
+# app.config['JWT_SECRET_KEY'] = '2fdbf97d3094c3c8896e173f16c55fcb'
+app.secret_key = '2fdbf97d3094c3c8896e173f16c55fcb'
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -241,11 +242,11 @@ def login():
     data = request.get_json()
     username = data.get('username')
     inputpsw = data.get('password')
+    user = Users.query.filter_by(username=username).first()
 
-    if Users.query.get_or_404(username=username):
-        return jsonify({"bad request":"invalid username"}),400
+    if user is None:
+        return jsonify({"bad request": "invalid username"}), 400
 
-    user = Users.query.get(username=username)
     hashpsw = user.password
     check = check_password_hash(hashpsw, inputpsw)
 
@@ -253,6 +254,7 @@ def login():
         return jsonify({"error":"incorrect password"}),401
     if check:
         return jsonify({"message":"Login Successfully"}),200 # no jwt-verify temporarily
+
 
 @app.route('/api/auth/logout', methods=['POST'])
 def logout():
