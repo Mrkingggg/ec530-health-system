@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { addUser } from '../services/userService';
+import { useNavigate } from 'react-router-dom';
 const Role = {
     PATIENT: 1,
     DOCTOR: 2,
@@ -12,6 +13,7 @@ const Gender = {
 };
 
 const UserForm = () => {
+    const navig = useNavigate();
     const [userData, setUserData] = useState({
         username: '',
         email: '',
@@ -31,6 +33,8 @@ const UserForm = () => {
         try {
             const result = await addUser(userData);
             console.log('User added:', result);
+            navig("/")
+
         } catch (error) {
             console.error('Error adding user:', error);
         }
@@ -66,9 +70,9 @@ const UserForm = () => {
             <label>
                 Gender:
                 <select value={userData.gender} onChange={handleChange}>
-                    <option value = {Gender.FEMALE}>Patient</option>
-                    <option value = {Gender.MALE}>Admin</option>
-                    <option value = {Gender.OTHER}>Doctor</option>
+                    <option value = {Gender.FEMALE}>Female</option>
+                    <option value = {Gender.MALE}>Male</option>
+                    <option value = {Gender.OTHER}>Other</option>
                 </select>
             </label>
             <br/>
