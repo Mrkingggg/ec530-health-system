@@ -19,7 +19,7 @@ CORS(app)
 #connect to my database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root1234@localhost:3306/HealthApp'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.config['JWT_SECRET_KEY'] = '2fdbf97d3094c3c8896e173f16c55fcb'
+app.config['JWT_SECRET_KEY'] = '2fdbf97d3094c3c8896e173f16c55fcb'
 app.secret_key = '2fdbf97d3094c3c8896e173f16c55fcb'
 
 db = SQLAlchemy(app)
@@ -157,7 +157,6 @@ def process_notify_queue():
         
         notification_queue.task_done()
 
-
 @app.route('/api/notifications/send', methods=['POST'])
 def notify():
     data = request.get_json()
@@ -200,7 +199,6 @@ def start_background_thread():
     t_noti.start()
 start_background_thread()
 
-
 @app.route('/api/reports/gen/<int:userId>', methods=['GET'])
 def repo_gen(userId):
     if not Measurements.query.filter_by(userId=userId).first():
@@ -211,7 +209,6 @@ def repo_gen(userId):
     reports_status[report_id] = {"status": "in progress"}
 
     return jsonify({"message": "Report generation in progress.", "reportId": report_id}),202
-
 
 @app.route('/api/reports/status/<reportId>', methods=['GET'])
 def report_status(reportId):
@@ -254,7 +251,6 @@ def login():
         return jsonify({"error":"incorrect password"}),401
     if check:
         return jsonify({"message":"Login Successfully"}),200 # no jwt-verify temporarily
-
 
 @app.route('/api/auth/logout', methods=['POST'])
 def logout():
