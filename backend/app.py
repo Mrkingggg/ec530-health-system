@@ -108,7 +108,7 @@ def add_user():
     if Users.query.filter_by(username=username).first():
         return jsonify({"error":"Username already exists"}),400
     
-    hash_psw = generate_password_hash(password)
+    hash_psw = generate_password_hash(password,method="pbkdf2") # cannot operate on scrypt method.
 
     try:
         dob_parse = datetime.strptime(dob, '%Y-%m-%d').date()
