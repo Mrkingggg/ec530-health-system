@@ -202,10 +202,14 @@ The notification queue system in the Flask application handles asynchronous noti
 
 ### Frontend:
 
-1. add user
+1. Create new accounts.
+Fill all fields ( role's field is multiple selection ). Click Add User and jump to login page.
+
 <br/>
-<img width="800" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/66afc1ec-8f0c-409d-80fa-28ddfc108efa">
-<br/><br/>
+<img width="1051" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/c7a9177b-60da-4e1f-abb1-39273d1052be">
+
+<br/>
+<br/>
 
 
 2. change user's roles
@@ -227,16 +231,7 @@ Start with Login or Create an acoount.
 <br/>
 
 
-4. Create new accounts.
-Fill all fields ( role's field is multiple selection ). Click Add User and jump to login page.
-
-<br/>
-<img width="1051" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/c7a9177b-60da-4e1f-abb1-39273d1052be">
-
-<br/>
-<br/>
-
-5.User's Page
+4.User's Page
 More functions to be added. ( Generate reports, review personal information, receive notifications, make appointments and etc..)
 Different Roles jump to corresponding pages.
 <br/><br/>
@@ -253,7 +248,7 @@ Different Roles jump to corresponding pages.
 <br/>
 <br/>
 
-6. Change Roles
+5. Change Roles
 Simple version now. Support input userId and select new Roles.
 <br/>
 
