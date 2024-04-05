@@ -244,19 +244,20 @@ def login():
 
     if user is None:
         return jsonify({"bad request": "invalid username"}), 400
-    
+
     hashpsw = user.password
     check = check_password_hash(hashpsw, inputpsw)
 
     if not check:
-        return jsonify({"error":"incorrect password"}),401
-    
-    user_roles = rolesmap.query.filter_by(userId=user.userId).all()
-    if any(role.roleid == sel_role for role in user_roles):
-        return jsonify({"message": "Login Successfully", "role": sel_role}), 200
+        return jsonify({"error": "incorrect password"}), 401
+
+    # 检查用户是否有特定的角色
+    user_roles = [role.roleId for role in user.roles]
+    # print("User roles:", user_roles)s
+    if int(sel_role) in user_roles:
+        return jsonify({"message": "Login Successfully", "role": int(sel_role)}), 200
     else:
         return jsonify({"error": "User does not have the selected role"}), 401
-   
 
 @app.route('/api/auth/logout', methods=['POST'])
 def logout():

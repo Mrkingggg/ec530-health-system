@@ -31,7 +31,7 @@ const ChgRForm = () =>{
     };
 
     const returnBack = () =>{
-        navig('/userhome');
+        navig('/adminhome');
     };
     
     return (
