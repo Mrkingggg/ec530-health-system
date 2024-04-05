@@ -200,7 +200,7 @@ The notification queue system in the Flask application handles asynchronous noti
 - git commit (files) -m "xxx"
 - git push origin main (to remote repo)
 
-### Frontend:
+### Web Application:
 
 1. Create new accounts.
 Fill all fields ( role's field is multiple selection ). Click Add User and jump to login page.
@@ -212,16 +212,7 @@ Fill all fields ( role's field is multiple selection ). Click Add User and jump 
 <br/>
 
 
-2. change user's roles
-<img width="1439" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/eeea4306-3174-4a37-9be0-e8f402d59268">
-<br/>
-
-<img width="701" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/b072a896-b701-4249-8387-ed8081a6b6cd">
-<br/>
-<br/>
-
-
-3.Login and User's Page
+2.Login and User's Page
 More functions to be added. ( Generate reports, review personal information, receive notifications, make appointments and etc..)
 Different Roles jump to corresponding pages. Start with Login or Create an acoount.
 - Login: Directly input username and password. If both are correct, the web jumps to user page.
@@ -240,7 +231,7 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
 <br/>
 <br/>
 
-4. Change Roles
+3. Change Roles
 Simple version now. Support input userId and select new Roles.
 <br/>
 
