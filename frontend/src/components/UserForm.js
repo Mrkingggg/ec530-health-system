@@ -77,16 +77,16 @@ const UserForm = () => {
                 Password:
                 <input type="text" name="password" value={userData.password} onChange={handleChange} ></input>
             </label>
-            <br/>
+            <br/><br/>
             <label>
                 Email:
                 <input type="email" name="email" value = {userData.email} onChange={handleChange}/>
-            </label><br/>
+            </label><br/><br/>
             <label>
                 Date of Birth:
                 <input type="date" name="dob" value={userData.dob} onChange={handleChange}/>
             </label>
-            <br/>
+            <br/><br/>
             <label>
                 Fullname:
                 <input type = "text" name="fullname" value = {userData.fullname} onChange={handleChange}/>
@@ -136,7 +136,7 @@ const UserForm = () => {
                         Patient
                     </label>
                 </div>
-            </label>
+            </label><br/>
             <button type="submit">Add User</button>
         </form>
     );
