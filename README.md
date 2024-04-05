@@ -206,9 +206,7 @@ The notification queue system in the Flask application handles asynchronous noti
 <br/>
 <img width="800" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/66afc1ec-8f0c-409d-80fa-28ddfc108efa">
 <br/><br/>
-![image](https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/df2e2d9f-b9ad-4ce4-a3ee-2141d8bb112d)
-<br/>
-<br/>
+
 
 2. change user's roles
 <img width="1439" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/eeea4306-3174-4a37-9be0-e8f402d59268">
