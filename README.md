@@ -221,19 +221,11 @@ Fill all fields ( role's field is multiple selection ). Click Add User and jump 
 <br/>
 
 
-3. Home Page & Login
-Start with Login or Create an acoount.
+3.Login and User's Page
+More functions to be added. ( Generate reports, review personal information, receive notifications, make appointments and etc..)
+Different Roles jump to corresponding pages. Start with Login or Create an acoount.
 - Login: Directly input username and password. If both are correct, the web jumps to user page.
 - Create a new account: jump to create page.
-<br/>
-<img width="1226" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/4ec51d57-9767-42f7-a255-3224cc268cfe">
-<br/>
-<br/>
-
-
-4.User's Page
-More functions to be added. ( Generate reports, review personal information, receive notifications, make appointments and etc..)
-Different Roles jump to corresponding pages.
 <br/><br/>
 <img width="701" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/08ebccfb-b506-4101-a1b4-b5900a5f3b55">
 <br/><br/>
@@ -248,7 +240,7 @@ Different Roles jump to corresponding pages.
 <br/>
 <br/>
 
-5. Change Roles
+4. Change Roles
 Simple version now. Support input userId and select new Roles.
 <br/>
 
