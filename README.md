@@ -241,6 +241,18 @@ Fill all fields ( role's field is multiple selection ). Click Add User and jump 
 
 5.User's Page
 More functions to be added. ( Generate reports, review personal information, receive notifications, make appointments and etc..)
+Different Roles jump to corresponding pages.
+<br/>
+<img width="701" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/08ebccfb-b506-4101-a1b4-b5900a5f3b55">
+<br/>
+<img width="716" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/b9924061-a1e9-44f6-88be-fbe932f164de">
+<br/>
+<img width="533" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/767b46be-c003-402f-8058-a0c28fd2749a">
+<br/>
+<img width="593" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/3b6058f3-0ba9-4988-8031-bcdcebfa7689">
+<br/>
+<img width="549" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/f3874bb2-961d-4a1d-8964-4dfb11556554">
+
 
 <br/>
 <img width="905" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/096c6fce-79a6-43e7-a4ef-6ba978e6335c">
