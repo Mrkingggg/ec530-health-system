@@ -204,9 +204,8 @@ The notification queue system in the Flask application handles asynchronous noti
 
 1. add user
 <br/>
-
-![image](https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/194d2562-7356-49ef-acbd-0be5e4b3ba65)
-
+<img width="800" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/66afc1ec-8f0c-409d-80fa-28ddfc108efa">
+<br/><br/>
 ![image](https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/df2e2d9f-b9ad-4ce4-a3ee-2141d8bb112d)
 <br/>
 <br/>
