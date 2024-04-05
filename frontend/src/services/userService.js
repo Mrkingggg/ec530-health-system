@@ -36,14 +36,14 @@ export const changeRole = async (userId, newRoles) => {
     }
 };
 
-export const login = async(username, password) =>{
+export const login = async(username, password, role) =>{
     try{
         const response = await fetch('http://127.0.0.1:5000/api/auth/login', {
             method: 'POST',
             headers:{
                 'Content-Type':'application/json',
             },
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify({ username, password, role })
         });
         const data = await response.json();
         

@@ -5,7 +5,7 @@ import { logout } from "../services/userService";
 // import Logout from "./Logout";
 // import ChgRForm from "./ChgRForm";
 
-function UserHomeForm() {
+function MPHome() {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
@@ -29,4 +29,4 @@ function UserHomeForm() {
     );
 }
 
-export default UserHomeForm;
+export default MPHome;

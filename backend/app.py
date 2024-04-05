@@ -58,7 +58,7 @@ class Users(db.Model):
 class Role(db.Model):
     __tablename__ = 'role'
     roleId = db.Column(db.Integer, primary_key = True)
-    rolename = db.Column(db.Enum('patient','doctor','admin'), unique=True, nullable=False)
+    rolename = db.Column(db.Enum('patient','doctor','admin'), unique=True, nullable=False) # patient 1, doctor 2, admin 3
 
 class Device(db.Model):
     __tablename__ = 'device'
@@ -239,18 +239,24 @@ def login():
     data = request.get_json()
     username = data.get('username')
     inputpsw = data.get('password')
+    sel_role = data.get('role')
     user = Users.query.filter_by(username=username).first()
 
     if user is None:
         return jsonify({"bad request": "invalid username"}), 400
-
+    
     hashpsw = user.password
     check = check_password_hash(hashpsw, inputpsw)
 
     if not check:
         return jsonify({"error":"incorrect password"}),401
-    if check:
-        return jsonify({"message":"Login Successfully"}),200 # no jwt-verify temporarily
+    
+    user_roles = rolesmap.query.filter_by(userId=user.userId).all()
+    if any(role.roleid == sel_role for role in user_roles):
+        return jsonify({"message": "Login Successfully", "role": sel_role}), 200
+    else:
+        return jsonify({"error": "User does not have the selected role"}), 401
+   
 
 @app.route('/api/auth/logout', methods=['POST'])
 def logout():

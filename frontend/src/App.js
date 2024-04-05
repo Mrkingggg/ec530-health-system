@@ -3,8 +3,10 @@ import UserForm from './components/UserForm';
 import ChgRForm from './components/ChgRForm'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import LoginForm from './components/LoginForm';
-import UserHomeForm from './components/UserHomeForm';
-// import { Navigate, Outlet } from 'react-router-dom';
+import MPHome from './components/MPHome';
+import PatientHome from './components/PatientHome';
+import AdminHome from './components/AdminHome';
+// import { Navigate, Outlet } from 'react-router-dom';w
 import "./App.css"
 
 
@@ -35,11 +37,12 @@ function App(){
             <div className='App'>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                   
                     <Route path="/adduser" element={<UserForm />} />
-                    <Route path="/userhome" element={<UserHomeForm />} />
+                    <Route path="/patienthome" element={<PatientHome />} />
+                    <Route path="/mphome" element={<MPHome />} />
+                    <Route path="/adminhome" element={<AdminHome />} />
+
                     <Route path="/changeRoles" element={<ChgRForm />} />
-                    
                 </Routes>
             </div>
         </Router>
