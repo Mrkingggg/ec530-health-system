@@ -1,0 +1,28 @@
+swagger: '2.0'
+info:
+  title: Health Monitoring Platform API
+  version: 1.0.0
+basePath: /api
+schemes:
+  - https
+paths:
+  /notifications/send:
+    post:
+      summary: Send Notification
+      description: Send a notification to a user.
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              userId:
+                type: string
+              message:
+                type: string
+      responses:
+        200:
+          description: Notification sent successfully.
+        400:
+          description: Invalid parameters.

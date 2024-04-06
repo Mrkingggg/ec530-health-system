@@ -1,0 +1,43 @@
+swagger: '2.0'
+info:
+  title: Health Monitoring Platform API
+  version: 1.0.0
+basePath: /api
+schemes:
+  - https
+paths:
+  /auth/login:
+    post:
+      summary: Login
+      description: Authenticate a user and return a token.
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+      responses:
+        200:
+          description: Authentication successful.
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+        401:
+          description: Invalid username or password.
+
+  /auth/logout:
+    post:
+      summary: Logout
+      description: Logout a user and invalidate the token.
+      responses:
+        200:
+          description: Successfully logged out.
+        401:
+          description: Invalid token.

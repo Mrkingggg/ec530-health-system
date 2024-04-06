@@ -1,0 +1,66 @@
+openapi: 3.0.0
+
+info: 
+  title: 'Device Interface API'
+  version: 1.0.0
+
+paths: 
+  /device/register:
+    post: 
+      summary: Device Register
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: 
+              type: object
+              properties:
+                devId:
+                  type: number
+                name:
+                  type: string
+                value:
+                  type: number
+                unit:
+                  type: string
+                regtime:
+                  type: string
+                  format: date-time
+                manufactor:
+                  type: string
+                status:
+                  type: string
+              required:
+                - devId
+                - name
+                - regtime
+                - manufactor
+                - status
+      responses: 
+        200:
+          description: Success registration
+          
+          
+  /device/{devId}/status:
+    put: 
+      summary: set the status of device
+      parameters:
+      - name: devId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: 
+              type: object
+              properties:
+                status:
+                  type: string
+              required: 
+              - status
+      responses:
+        200:
+          description: Succeed Modify Status

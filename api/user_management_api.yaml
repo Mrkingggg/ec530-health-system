@@ -1,0 +1,51 @@
+swagger: '2.0'
+info:
+  title: Health Monitoring Platform API
+  version: 1.0.0
+basePath: /api
+schemes:
+  - https
+paths:
+  /users/add:
+    post:
+      summary: Add User
+      description: Add a new user to the system.
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              username:
+                type: string
+              role:
+                type: string
+              password:
+                type: string
+      responses:
+        201:
+          description: User added successfully.
+        400:
+          description: Invalid parameters or user already exists.
+
+  /users/changeRole:
+    put:
+      summary: Change User Role
+      description: Change the role of an existing user.
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              userId:
+                type: string
+              newRole:
+                type: string
+      responses:
+        200:
+          description: User role updated successfully.
+        400:
+          description: Invalid parameters or user not found.

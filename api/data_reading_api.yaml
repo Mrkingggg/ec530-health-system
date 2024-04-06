@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: 'Data Reading API'
+  version: 1.0.0
+  
+paths:
+  /data_read/submit:
+    post:
+      summary: submit read data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: 
+              type: object
+              properties:
+                name:
+                  type: string
+                devId:
+                  type: number
+                value:
+                  type: number
+                unit:
+                  type: string
+                read_time:
+                  type: string
+                  format: date-time
+              required: 
+              - name
+              - devId
+              - value
+              - unit
+              - read_time
+              
+      responses:
+        200:
+         description: Succeed in submitting data read from device.
+        401:
+         description: Fail submit data
+         
+  /data_read/{devId}:
+    get:
+      summary: Read data from device
+      parameters:
+      - name: devId
+        in: path
+        required: true
+        schema:
+          type: string
+      
+      responses:
+        200:
+          description: Succeed in reading data.
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    value:
+                      type: number
+                    unit:
+                      type: string
+                    read_time:
+                      type: string
+                      format: date-time
+                  
+                
+              
+          
+      
+  
