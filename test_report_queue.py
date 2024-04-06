@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from app import app as flask_app, report_queue, process_report_queue
+from .backend.app import app as flask_app, report_queue, process_report_queue
 
 @pytest.fixture
 def app():
