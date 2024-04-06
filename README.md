@@ -5,31 +5,26 @@
 ### Schema of API data:
 
 1. Data Reading Module: GET
-   - device: devId
-   - properties: object
-     - name: string
-     - value: number
-     - unit: string
-     - read_time: date-time
-   - regis_time: date-time
+   - measurementid
 
 - response:
-  - 200: success
+  - 200: success, with response body
   - 404: error ( not found )
 
-2. Device Interface: GET / POST
-
+2. Device Interface: POST, '/api/admin/RegisDevice'
    - device:
      - devId:string
      - name: string
-     - value: number
      - unit: string
      - regtime: date-time
      - manufactor: string
      - status: string
    - response:
      - 200: success
-     - 404: error ( not found )
+     - 404: error ( missing information )
+
+<br/><br/>
+<img width="1025" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/a629a16b-999c-4454-8c4e-16a2d0865f7b">
 
 3. Authentication Authorization:
    - Login:
@@ -117,16 +112,15 @@
    - deviceid: int
    - manufactor: varchar
    - devType: varchar
-   - value: float
-   - measuretime: datetime
    - unit: varchar
-
+   - status
+   
 5. table Measurements:
-
    - MeasurementId: int(primary key)
    - deviceId: int ( deviceId from table device )
    - userId: int (userId from table users)
-
+   - value: float
+   - measuretime: datetime
 6. table appointments:
    - appointmentId: int (PM)
    - patientId
