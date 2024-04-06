@@ -113,7 +113,7 @@
    - devType: varchar
    - unit: varchar
    - status
-   
+
 5. table Measurements:
    - MeasurementId: int(primary key)
    - deviceId: int ( deviceId from table device )
@@ -193,10 +193,10 @@ The notification queue system in the Flask application handles asynchronous noti
 - git commit (files) -m "xxx"
 - git push origin main (to remote repo)
 
-### Web Application:
+## Web Application:
 
 1. Create new accounts.
-Fill all fields ( role's field is multiple selection ). Click Add User and jump to login page.
+   Fill all fields ( role's field is multiple selection ). Click Add User and jump to login page.
 
 <br/>
 <img width="1051" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/c7a9177b-60da-4e1f-abb1-39273d1052be">
@@ -204,29 +204,28 @@ Fill all fields ( role's field is multiple selection ). Click Add User and jump 
 <br/>
 <br/>
 
-
 2.Login and User's Page
 More functions to be added. ( Generate reports, review personal information, receive notifications, make appointments and etc..)
 Different Roles jump to corresponding pages. Start with Login or Create an acoount.
+
 - Login: Directly input username and password. If both are correct, the web jumps to user page.
 - Create a new account: jump to create page.
-<br/><br/>
-<img width="701" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/08ebccfb-b506-4101-a1b4-b5900a5f3b55">
-<br/><br/>
-<img width="716" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/b9924061-a1e9-44f6-88be-fbe932f164de">
-<br/><br/>
-<img width="533" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/767b46be-c003-402f-8058-a0c28fd2749a">
-<br/><br/>
-<img width="593" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/3b6058f3-0ba9-4988-8031-bcdcebfa7689">
-<br/><br/>
-<img width="549" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/f3874bb2-961d-4a1d-8964-4dfb11556554">
+  <br/><br/>
+  <img width="701" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/08ebccfb-b506-4101-a1b4-b5900a5f3b55">
+  <br/><br/>
+  <img width="716" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/b9924061-a1e9-44f6-88be-fbe932f164de">
+  <br/><br/>
+  <img width="533" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/767b46be-c003-402f-8058-a0c28fd2749a">
+  <br/><br/>
+  <img width="593" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/3b6058f3-0ba9-4988-8031-bcdcebfa7689">
+  <br/><br/>
+  <img width="549" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/f3874bb2-961d-4a1d-8964-4dfb11556554">
 
 <br/>
 <br/>
 
 3. Change Roles
-Simple version now. Support input userId and select new Roles.
-<br/>
+   Simple version now. Support input userId and select new Roles.
+   <br/>
 
 <img width="804" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/f87bd6a5-9afe-4c9c-a591-430e7184c03c">
-

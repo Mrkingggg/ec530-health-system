@@ -8,6 +8,7 @@ import PatientHome from './components/PatientHome';
 import AdminHome from './components/AdminHome';
 // import { Navigate, Outlet } from 'react-router-dom';w
 import "./App.css"
+import AddDevForm from './components/AddDevForm';
 
 
 // Make sure users have logged in before other operations.
@@ -41,7 +42,7 @@ function App(){
                     <Route path="/patienthome" element={<PatientHome />} />
                     <Route path="/mphome" element={<MPHome />} />
                     <Route path="/adminhome" element={<AdminHome />} />
-
+                    <Route path="/addDev" element={<AddDevForm />} />
                     <Route path="/changeRoles" element={<ChgRForm />} />
                 </Routes>
             </div>

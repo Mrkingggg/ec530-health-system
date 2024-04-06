@@ -20,7 +20,7 @@ function AdminHome() {
             <h1>Hi, Admin</h1><br/>
 
             <Link to="/changeRoles">Change user's roles</Link><br/>
-
+            <Link to="/addDev">Add New Device.</Link><br/>
             <button onClick={handleLogout}>Logout</button>
         </div>
 

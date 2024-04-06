@@ -75,3 +75,23 @@ export const logout = async() =>{
         throw error;
     }
 };
+
+export const regis_device = async(manufactor, devType, status, unit) =>{
+
+    try{
+        const response = await fetch('/api/admin/RegisDevice', {
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({manufactor, devType, status, unit})
+        });
+        const data = await response.json();
+        if(!response.ok){
+            throw new Error(data.error || data.bad_request || 'Register failed');
+        }
+        return data;
+    }catch(error){
+        throw error;
+    }
+};
