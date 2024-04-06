@@ -42,7 +42,9 @@ class Measurements(db.Model):
     MeasurementId = db.Column(db.Integer, primary_key=True)
     deviceId  = db.Column(db.Integer, db.ForeignKey('device.deviceId'))
     userId = db.Column(db.Integer, db.ForeignKey('users.userId'))
-    
+    value = db.Column(db.Numeric(10, 2), nullable=True) 
+    measuretime = db.Column('measuretime', db.DateTime, nullable=False, server_default=db.func.current_timestamp())
+
 class Users(db.Model):
     __tablename__ = 'users'
     userId = db.Column(db.Integer, primary_key = True)
@@ -67,8 +69,7 @@ class Device(db.Model):
     devType = db.Column(db.String(50),nullable = False)
     unit = db.Column(db.String(50),nullable=False)
     measurements = db.relationship('Measurements', backref='device', lazy=True)
-    value = db.Column(db.Numeric(10, 2), nullable=True) 
-    measuretime = db.Column('measuretime', db.DateTime, nullable=False, server_default=db.func.current_timestamp())
+    status=db.Column(db.Integer, nullable=False, server_default=0) # default: banned 0
 
 class DeviceSchema(ma.SQLAlchemyAutoSchema):    # for nested json
     class Meta:
@@ -264,6 +265,23 @@ def logout():
     session.clear()
     return jsonify({"message":"Successfully logout"}),200
     
+@app.route('/api/admin/RegisDevice', methods=['POST'])
+def register_device():
+    data = request.get_json()
+    manufactor = data.get('manufactor')
+    devType = data.get('devType')
+    status = data.get('status',0)
+    unit = data.get('unit')
+    if not all([manufactor, devType, status, unit]):
+        return jsonify({"error":"missing information"}),400
+    try:
+        new_device = Device(manufactor=manufactor, devType=devType, status=status, unit=unit)
+        db.session.add(new_device)
+        db.session.commit()
+        return jsonify({"message":"Device registered successfully", "deviceId":new_device.deviceId})
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": e}), 500
 
 if __name__ == '__main__':
     # db.create_all()
