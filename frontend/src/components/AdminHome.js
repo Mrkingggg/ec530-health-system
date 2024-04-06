@@ -19,8 +19,24 @@ function AdminHome() {
         <div>
             <h1>Hi, Admin</h1><br/>
 
-            <Link to="/changeRoles">Change user's roles</Link><br/>
-            <Link to="/addDev">Add New Device.</Link><br/>
+            <Link to="/changeRoles" style={{ 
+                padding: '10px 15px', 
+                backgroundColor: 'blue', 
+                color: 'white', 
+                textDecoration: 'none', 
+                border: 'none',
+                cursor: 'pointer',
+                display: 'inline-block'
+                }}>Change user's roles</Link><br/><br/><br/>
+            <Link to="/addDev" style={{ 
+                padding: '10px 15px', 
+                backgroundColor: 'blue', 
+                color: 'white', 
+                textDecoration: 'none', 
+                border: 'none',
+                cursor: 'pointer',
+                display: 'inline-block'
+                }}>Add a New Device.</Link><br/><br/><br/>
             <button onClick={handleLogout}>Logout</button>
         </div>
 

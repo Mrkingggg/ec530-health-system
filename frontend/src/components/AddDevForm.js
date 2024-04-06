@@ -1,20 +1,38 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { regis_device } from "../services/userService";
 
 function AddDevForm() {
     const [manufactor, setManufactor] = useState('');
     const [devType, setDevType] = useState('');
-    const [status, setStatus] = useState(0); // 保持为整数类型
+    const [status, setStatus] = useState(0); // status: int (0 / 1)
+    const [unit, setUnit] = useState('');
+    const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
+
     const navig = useNavigate();
 
-    const handleAddDev = (e) => {
-        // 你的添加设备逻辑
+    const returnBack = async(event) => {
+        navig('/adminhome');
+    }
+    const handleAddDev = async(event) => {
+        event.preventDefault();
+        setError('');
+        setMessage('');
+        try{
+            const data = regis_device(manufactor, devType, status, unit);
+            setMessage(data.message);
+            navig('/adminhome');
+
+        }catch(e){
+            setError(e.message);
+        }
     };
 
     return (
         <div>
             <h2>Add a Device:</h2>
-            <form>
+            <form onSubmit={handleAddDev}>
                 <label>
                     Manufactor: 
                     <input type="text" 
@@ -28,7 +46,14 @@ function AddDevForm() {
                            name="devType"
                            value={devType}
                            onChange={(e) => setDevType(e.target.value)} />
-                </label>
+                </label><br/>
+                <label>
+                    Unit:
+                    <input type="text"
+                            name="unit"
+                            value={unit}
+                            onChange={(e) => setUnit(e.target.value)} />
+                </label><br/><br/>
                 <div>
                     Status:<br/><br/>
                     <label>
@@ -46,9 +71,14 @@ function AddDevForm() {
                                checked={status === 1}
                                onChange={(e) => setStatus(parseInt(e.target.value, 10))}/>
                         Enable Device
-                    </label>
+                    </label><br/><br/>
+                    <button type="submit">Add</button><br/>
+                    <button onClick={returnBack}>Return to My Page</button>
                 </div>
             </form>
+            <br/><br/>
+            {error && <p style={{color: 'red'}}>{error}</p>}
+            {message && <p style={{color: 'green'}}>{message}</p>}
         </div>
     );
 }

@@ -270,9 +270,9 @@ def register_device():
     data = request.get_json()
     manufactor = data.get('manufactor')
     devType = data.get('devType')
-    status = data.get('status',0)
+    status = data.get('status')
     unit = data.get('unit')
-    if not all([manufactor, devType, status, unit]):
+    if None in [manufactor, devType, status, unit]:
         return jsonify({"error":"missing information"}),400
     try:
         new_device = Device(manufactor=manufactor, devType=devType, status=status, unit=unit)

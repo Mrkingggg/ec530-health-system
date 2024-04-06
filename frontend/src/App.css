@@ -13,11 +13,19 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #f0f8ff; /* 淡蓝色背景，给人一种清新健康的感觉 */
+  background-color: #f0f8ff; 
+}
+.button-style {
+  padding: 10px 15px;
+  background-color: blue;
+  color: white;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
 }
 
 h1 {
-  color: #106466; /* 深绿色，符合健康主题 */
+  color: #106466; 
   margin: 20px 0;
 }
 
@@ -37,8 +45,9 @@ nav ul li a {
   font-weight: bold;
 }
 
+/* mouse hovering */
 nav ul li a:hover {
-  color: #f08080; /* 淡红色，用于鼠标悬停 */
+  color: #f08080;  
 }
 
 button {
