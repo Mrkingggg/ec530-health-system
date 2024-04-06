@@ -215,7 +215,7 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
   <br/><br/>
   <img width="716" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/b9924061-a1e9-44f6-88be-fbe932f164de">
   <br/><br/>
-  <img width="533" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/767b46be-c003-402f-8058-a0c28fd2749a">
+  <img width="610" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/f80cbed1-9a98-4580-9111-d091e8991038">
   <br/><br/>
   <img width="593" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/3b6058f3-0ba9-4988-8031-bcdcebfa7689">
   <br/><br/>
@@ -229,3 +229,7 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
    <br/>
 
 <img width="804" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/f87bd6a5-9afe-4c9c-a591-430e7184c03c">
+<br/>
+4. Add a new device -- Admin
+<br/>
+<img width="736" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/8bc0faac-7452-4ce9-a021-186ed3e183a8">
