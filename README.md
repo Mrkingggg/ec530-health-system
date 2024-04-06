@@ -22,8 +22,7 @@
    - response:
      - 200: success
      - 404: error ( missing information )
-
-<br/><br/>
+<br/>
 <img width="1025" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/a629a16b-999c-4454-8c4e-16a2d0865f7b">
 
 3. Authentication Authorization:
