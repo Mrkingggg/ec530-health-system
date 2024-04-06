@@ -229,3 +229,7 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
    <br/>
 
 <img width="804" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/f87bd6a5-9afe-4c9c-a591-430e7184c03c">
+<br/>
+4. Add a new device -- Admin
+<br/>
+<img width="736" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/8bc0faac-7452-4ce9-a021-186ed3e183a8">
