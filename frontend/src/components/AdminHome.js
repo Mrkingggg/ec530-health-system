@@ -21,7 +21,7 @@ function AdminHome() {
 
             <Link to="/changeRoles">Change user's roles</Link><br/>
 
-            <button onClick={handleLogout}>Logout to Home Page.</button>
+            <button onClick={handleLogout}>Logout</button>
         </div>
 
 

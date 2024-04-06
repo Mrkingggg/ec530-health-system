@@ -69,7 +69,7 @@ class Device(db.Model):
     devType = db.Column(db.String(50),nullable = False)
     unit = db.Column(db.String(50),nullable=False)
     measurements = db.relationship('Measurements', backref='device', lazy=True)
-    status=db.Column(db.Integer, nullable=False, server_default=0) # default: banned 0
+    status=db.Column(db.Integer, nullable=False) # default: banned 0
 
 class DeviceSchema(ma.SQLAlchemyAutoSchema):    # for nested json
     class Meta:
