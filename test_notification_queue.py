@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import call
 from unittest.mock import patch
-from backend.app import app as flask_app, notification_queue, process_notify_queue
+from app import app as flask_app, notification_queue, process_notify_queue
 
 @pytest.fixture
 def app():
