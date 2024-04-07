@@ -9,6 +9,7 @@ import AdminHome from './components/AdminHome';
 // import { Navigate, Outlet } from 'react-router-dom';w
 import "./App.css"
 import AddDevForm from './components/AddDevForm';
+import ManageDev from './components/ManageDev';
 
 
 // Make sure users have logged in before other operations.
@@ -44,6 +45,7 @@ function App(){
                     <Route path="/adminhome" element={<AdminHome />} />
                     <Route path="/addDev" element={<AddDevForm />} />
                     <Route path="/changeRoles" element={<ChgRForm />} />
+                    <Route path="/managedev" element={<ManageDev />} />
                 </Routes>
             </div>
         </Router>
