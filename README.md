@@ -86,8 +86,23 @@
    - GET: /api/admin/viewDevice
    - response: All Device information in Nested json.  <br/> <br/>
    <img width="1031" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/3b7c3e4e-5104-4888-ac10-a374bb363c82">
+<br/>
+8. Delete Device
+   - DELETE: /api/admin/deldev/<int:deviceId>  
+   - response:
+      - 400: "bad request": "device does not exist."
+      - 200: "message": "Device deleted successfully" <br/> <br/>
+   <img width="1022" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/6f870ed0-437d-48bf-8700-8d060b5fd492">
+<br/>
+9. Change Device Status
+   - Reverse status ( Enable:1 <--> Disable:0 )
+   - PUT : /api/admin/<int:deviceId>/chgstatus
+   - response:
+     - 404: "error":"Device not found" / "missing status"
+     - 200: "message": "Device status updated."
+   <br/>
+   <img width="1312" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/9524955e-6a4e-4730-84d8-7fb6b79d02e0">
 
-9.  
 
 ## Database Schema -- relational sql ( implemented with mysql in file dbschema.sql )
 
