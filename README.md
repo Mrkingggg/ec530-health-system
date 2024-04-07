@@ -6,7 +6,6 @@
 
 1. Data Reading Module: GET
    - measurementid
-
 - response:
   - 200: success, with response body
   - 404: error ( not found )
@@ -82,6 +81,13 @@
      - responses:
        - success: 200
        - failure: 400
+
+7. View Device
+   - GET: /api/admin/viewDevice
+   - response: All Device information in Nested json.  <br/>
+   <img width="1031" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/3b7c3e4e-5104-4888-ac10-a374bb363c82">
+
+9.  
 
 ## Database Schema -- relational sql ( implemented with mysql in file dbschema.sql )
 
