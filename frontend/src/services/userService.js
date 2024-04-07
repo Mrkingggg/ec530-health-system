@@ -95,3 +95,25 @@ export const regis_device = async(manufactor, devType, status, unit) =>{
         throw error;
     }
 };
+
+export const change_dev_status = async(devId, new_status) =>{
+
+    try{
+        const response = await fetch('/api/admin/viewDevice', {
+            method:'PUT',
+            headers:{
+                'Contect-Type': 'application/json',
+            },
+            body: JSON.stringify({devId, new_status})
+        });
+        const data = await response.json();
+        if(!response.ok){
+            throw new Error(data.error || data.bad_request || 'Device Status change failed');
+        }
+        return data;
+
+    }catch(error){
+        throw error;
+    }
+
+};

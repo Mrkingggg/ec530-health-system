@@ -21,7 +21,7 @@ function AdminHome() {
 
             <Link to="/changeRoles" style={{ 
                 padding: '10px 15px', 
-                backgroundColor: 'blue', 
+                backgroundColor:'#006DFF', 
                 color: 'white', 
                 textDecoration: 'none', 
                 border: 'none',
@@ -30,13 +30,22 @@ function AdminHome() {
                 }}>Change user's roles</Link><br/><br/><br/>
             <Link to="/addDev" style={{ 
                 padding: '10px 15px', 
-                backgroundColor: 'blue', 
+                backgroundColor: '#006DFF', 
                 color: 'white', 
                 textDecoration: 'none', 
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-block'
                 }}>Add a New Device.</Link><br/><br/><br/>
+            <Link to="/managedev" style={{ 
+                padding: '10px 15px', 
+                backgroundColor: '#006DFF', 
+                color: 'white', 
+                textDecoration: 'none', 
+                border: 'none',
+                cursor: 'pointer',
+                display: 'inline-block'
+                }}>View & Manage Devices.</Link><br/><br/><br/>
             <button onClick={handleLogout}>Logout</button>
         </div>
 

@@ -75,7 +75,7 @@ class DeviceSchema(ma.SQLAlchemyAutoSchema):    # for nested json
     class Meta:
         model = Device
         include_fk = True
-
+device_schema = DeviceSchema(many=True)
 class Appointment(db.Model):
     __tablename__ = 'appointments'
     appointmentId = db.Column(db.Integer, primary_key=True)
@@ -134,8 +134,6 @@ def chg_role():
     newRoles = data.get('newRoles',[])
     if not all([userId, newRoles]):
         return jsonify({"bad requests":"missing components"}),400
-    # if not Users.query.filter(userId = userId).first():
-    #     return jsonify({"bad request":"user does not exist"}),400
     
     try:
         usr = Users.query.get_or_404(userId)
@@ -223,18 +221,6 @@ def report_status(reportId):
         return jsonify({"status": "in progress"}),202
 
 
-    # devs = Device.query.filter(deviceId = res.deviceId).all() # select all device ids for one measurement
-    # patient = Users.query.filter(userId = userId).first()  # select patient from users by userId
-    
-    # pname = patient.username  # report needed info.
-    # dob = patient.dob
-
-    # for dev in devs:
-    #     devType = dev.devType  
-    #     unit =res.unit
-    #     value = res.value
-    #     mtime = res.measuretime
-
 @app.route('/api/auth/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -282,6 +268,11 @@ def register_device():
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": e}), 500
+
+@app.route('/api/admin/viewDevice')
+def view_device():
+    devices = Device.query.all()
+    return device_schema.dump(devices)
 
 # @app.route()
 if __name__ == '__main__':
