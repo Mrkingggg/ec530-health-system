@@ -274,6 +274,39 @@ def view_device():
     devices = Device.query.all()
     return device_schema.dump(devices)
 
+@app.route('/api/admin/deldev/<int:deviceId>', methods=['DELETE'])
+def delete_device(deviceId):
+    device = Device.query.get(deviceId)
+    if not device:
+        return jsonify({"bad request": "device does not exist."}), 400
+    try:
+        db.session.delete(device)
+        db.session.commit()
+
+        return jsonify({"message": "Device deleted successfully"}),200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": e}), 500
+
+@app.route('/api/admin/<int:deviceId>/chgstatus', methods=['PUT'])
+def change_device_status(deviceId):
+    device = Device.query.get(deviceId)
+    if not device:
+        return jsonify({"error":"Device not found"}), 404
+    
+    data = request.get_json()
+    new_status = data.get('status')
+
+    if new_status is None:
+        return jsonify({"error":"missing status"}),404
+    try:
+        device.status = new_status
+        db.session.commit()
+        return jsonify({"message": "Device status updated."}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": e}), 500
+
 # @app.route()
 if __name__ == '__main__':
     # db.create_all()
