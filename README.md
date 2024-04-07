@@ -195,6 +195,8 @@ The notification queue system in the Flask application handles asynchronous noti
 
 ## Web Application:
 
+### General Functions:
+<br/>
 1. Create new accounts.
    Fill all fields ( role's field is multiple selection ). Click Add User and jump to login page.
 
@@ -224,12 +226,14 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
 <br/>
 <br/>
 
-3. Change Roles
-   Simple version now. Support input userId and select new Roles.
-   <br/>
+### Admin Functions:
+<br/><br/>
+1. Change Roles
+   
+<br/>
+2. Add a new device
+<br/>
 
-<img width="804" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/f87bd6a5-9afe-4c9c-a591-430e7184c03c">
+3. View and manage devices ( change status / delete devices )
 <br/>
-4. Add a new device -- Admin
-<br/>
-<img width="736" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/8bc0faac-7452-4ce9-a021-186ed3e183a8">
+
