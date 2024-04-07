@@ -87,7 +87,9 @@
    - response: All Device information in Nested json.  <br/> <br/>
    <img width="1031" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/3b7c3e4e-5104-4888-ac10-a374bb363c82">
 <br/>
+
 8. Delete Device
+
    - DELETE: /api/admin/deldev/<int:deviceId>  
    - response:
       - 400: "bad request": "device does not exist."
