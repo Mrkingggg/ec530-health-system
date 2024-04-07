@@ -214,16 +214,7 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
 - Create a new account: jump to create page.
   <br/><br/>
   <img width="701" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/08ebccfb-b506-4101-a1b4-b5900a5f3b55">
-  <br/><br/>
-  <img width="716" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/b9924061-a1e9-44f6-88be-fbe932f164de">
-  <br/><br/>
-  <img width="610" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/f80cbed1-9a98-4580-9111-d091e8991038">
-  <br/><br/>
-  <img width="593" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/3b6058f3-0ba9-4988-8031-bcdcebfa7689">
-  <br/><br/>
-  <img width="549" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/f3874bb2-961d-4a1d-8964-4dfb11556554">
 
-<br/>
 <br/>
 
 ### Admin Functions:
