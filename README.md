@@ -244,7 +244,12 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
 
 ### Admin Functions:
 1. Change Roles
-2. Add a new device
-3. View and manage devices ( change status / delete devices )
+   <br/>
+   <img width="804" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/993140c8-9618-4966-95eb-5f04f5c2722d">
+
+2. Add a new device <br/> <img width="469" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/650ee457-6755-4dcb-affc-f789988e2066">
+
+3. View and manage devices ( change status / delete devices ) <br/> <img width="1345" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/96a5d360-2489-4dd0-9934-3bfb9ff070bd">
+
 <br/>
 
