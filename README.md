@@ -96,7 +96,9 @@
       - 200: "message": "Device deleted successfully" <br/> <br/>
    <img width="1022" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/6f870ed0-437d-48bf-8700-8d060b5fd492">
 <br/>
+
 9. Change Device Status
+
    - Reverse status ( Enable:1 <--> Disable:0 )
    - PUT : /api/admin/<int:deviceId>/chgstatus
    - response:
