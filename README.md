@@ -229,11 +229,7 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
 ### Admin Functions:
 <br/><br/>
 1. Change Roles
-   
-<br/>
 2. Add a new device
-<br/>
-
 3. View and manage devices ( change status / delete devices )
 <br/>
 
