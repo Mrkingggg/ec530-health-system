@@ -9,6 +9,7 @@ from queue import Queue
 import threading
 import uuid
 from flask_cors import CORS
+from datetime import datetime
 
 # pip install -r requirements.txt -- apply the requirements.txt in various environments.
 
@@ -93,6 +94,14 @@ class MeaSchema(ma.SQLAlchemyAutoSchema):   # for nested json
 
 # db.create_all()
 
+def validate_date(date_str):
+    try:
+        datetime.strptime(date_str, '%Y-%m-%d').date()
+        return True
+    except ValueError:
+        return False
+
+
 @app.route('/api/users/add', methods=['POST'])
 def add_user():
     data = request.get_json()
@@ -103,6 +112,9 @@ def add_user():
     password = data.get('password')
     role_ids = data.get('role_ids',[])
 
+    # if not validate_date(dob):
+    #         return jsonify({"error":"Invalid date format. Please use YYYY-MM-DD format."}), 400
+    
     if not all([username, email, dob, fullname, password]):
         return jsonify({"error":"Missing information"}),400
     
