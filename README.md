@@ -108,7 +108,7 @@
    <img width="1312" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/9524955e-6a4e-4730-84d8-7fb6b79d02e0">
 
 
-## Database Schema -- relational sql ( implemented with mysql in file dbschema.sql )
+## Database Schema -- relational sql ( in dbschema.sql )
 ### Corresponding DB tables' flask definition in /backend/app.py
 
 1. table users:
