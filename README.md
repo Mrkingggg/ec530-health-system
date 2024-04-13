@@ -152,13 +152,6 @@
    - appointmentTime
    - status
 
-## API implement with Flask_restful framework
-
-- Implemented stub in stub_datareading.py and stub_device.py
-  - If device id not found in existing list, return 404 not found
-  - If missing information in requests, return 400 bad request
-  - Normal: 200: Success
-
 ## app.py
 
 ### Implement restful api to interact with database for :
