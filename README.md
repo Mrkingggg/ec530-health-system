@@ -109,6 +109,7 @@
 
 
 ## Database Schema -- relational sql ( implemented with mysql in file dbschema.sql )
+### Corresponding DB tables' flask definition in /backend/app.py
 
 1. table users:
 
@@ -152,7 +153,7 @@
    - appointmentTime
    - status
 
-## app.py
+## app.py （ /backend/app.py ）
 
 ### Implement restful api to interact with database for :
 
