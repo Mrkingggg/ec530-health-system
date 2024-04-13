@@ -109,7 +109,7 @@
 
 
 ## Database Schema -- relational sql ( in dbschema.sql )
-### Corresponding DB tables' flask definition in /backend/app.py
+### Corresponding DB tables' python-flask definition in /backend/app.py
 
 1. table users:
 
