@@ -213,7 +213,7 @@ The notification queue system in the Flask application handles asynchronous noti
 - git push origin main (to remote repo)
 
 ## Web Application:
-
+More results screenshots in /screenshot.
 ### General Functions:
 <br/>
 1. Create new accounts.
