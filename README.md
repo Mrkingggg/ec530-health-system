@@ -1,8 +1,8 @@
 # ec530 final project
 
-### ALL APIs needed defined in .yaml files ... within the repository
 
-### Schema of API data:
+## Schema of API:
+(ALL APIs needed defined in .yaml files ... within the repository)
 
 1. Data Reading Module: GET
    - measurementid
