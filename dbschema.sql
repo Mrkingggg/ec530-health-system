@@ -26,16 +26,16 @@ Create table device(
 	deviceId int auto_increment primary key,
     manufactor varchar(255) not null,
     devType varchar(50) not null,
-    val DECIMAL(10,2),
-    measuretime DATETIME default CURRENT_TIMESTAMP,
-    unit varchar(50) not null
-
+    `status` int NOT NULL DEFAULT '0',
+    unit varchar(50) not null,
 );
 
 Create table measurements(
 	MeasurementId int auto_increment primary key,
     deviceId int,
     userId int,
+    val DECIMAL(10,2),
+    measuretime DATETIME default CURRENT_TIMESTAMP,
     foreign key(deviceId) references device(deviceId),
     foreign key(userId) references users(userId)
 
