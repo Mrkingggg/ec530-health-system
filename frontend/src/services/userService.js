@@ -123,9 +123,9 @@ export const browse_patient = async() => {
         const response = await fetch('/api/MP/browsePatient', {
             method:'GET',
             headers:{
-                'Contect-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({})
+           
         });
         const data = await response.json();
         if(!response.ok){

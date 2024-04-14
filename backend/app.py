@@ -54,7 +54,7 @@ class Users(db.Model):
     dob = db.Column(db.Date, nullable=False)
     fullname = db.Column(db.String(150), nullable=False)
     password = db.Column(db.String(255), nullable=False)
-
+    gender = db.Column(db.Enum('female','male','other'), unique=True, nullable=False)
     roles = db.relationship('Role', secondary=rolesmap, backref=db.backref('users', lazy='dynamic'))
     measurements = db.relationship('Measurements', backref='user', lazy=True)
 
@@ -329,7 +329,8 @@ def browse_patients():
             'username': user.username,
             'email': user.email,
             'dob': user.dob.isoformat(),
-            'fullname': user.fullname
+            'fullname': user.fullname,
+            'gender': user.gender
         } for user in patients
     ]
     return jsonify(result)
