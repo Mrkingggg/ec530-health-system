@@ -319,6 +319,21 @@ def change_device_status(deviceId):
         db.session.rollback()
         return jsonify({"error": e}), 500
 
+@app.route('api/MP/browsePatient', methods=['GET'])
+def browse_patients():
+
+    patients = db.session.query(Users).join(rolesmap, Users.userId == rolesmap.c.userId).join(Role, rolesmap.c.roleId == Role.roleId).filter(Role.rolename == 'patient').all()
+    result = [
+        {
+            'userId': user.userId,
+            'username': user.username,
+            'email': user.email,
+            'dob': user.dob.isoformat(),
+            'fullname': user.fullname
+        } for user in patients
+    ]
+    return jsonify(result)
+
 # @app.route()
 if __name__ == '__main__':
     # db.create_all()
