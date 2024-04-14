@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // 导入 Link
+import { useNavigate, Link } from "react-router-dom"; // 导入 Link
 import { logout } from "../services/userService"; 
 // import { BrowserRouter as Link } from 'react-router-dom';
 // import Logout from "./Logout";
@@ -22,6 +22,7 @@ function MPHome() {
         <div>
             <h1>Doctor/Nurse Home</h1><br/> 
             <br/><br/>
+            <Link to="/browsepatients">Browse Patients.</Link><br/><br/><br/>
             <button onClick={handleLogout}>Logout</button> {/* 登出按钮 */}
         </div>
     );

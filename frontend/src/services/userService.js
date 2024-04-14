@@ -117,3 +117,22 @@ export const change_dev_status = async(devId, new_status) =>{
     }
 
 };
+
+export const browse_patient = async() => {
+    try{
+        const response = await fetch('/api/MP/browsePatient', {
+            method:'GET',
+            headers:{
+                'Contect-Type': 'application/json',
+            },
+            body: JSON.stringify({})
+        });
+        const data = await response.json();
+        if(!response.ok){
+            throw new Error(data.error || data.bad_request || 'Device Status change failed');
+        }
+        return data;
+    }catch(error){
+        throw error
+    }
+}

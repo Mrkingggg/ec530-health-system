@@ -10,6 +10,7 @@ import AdminHome from './components/AdminHome';
 import "./App.css"
 import AddDevForm from './components/AddDevForm';
 import ManageDev from './components/ManageDev';
+import BrowsePatient from './components/BrowsePatient';
 
 
 // Make sure users have logged in before other operations.
@@ -46,6 +47,7 @@ function App(){
                     <Route path="/addDev" element={<AddDevForm />} />
                     <Route path="/changeRoles" element={<ChgRForm />} />
                     <Route path="/managedev" element={<ManageDev />} />
+                    <Route path="/browsepatients" element={<BrowsePatient />} />
                 </Routes>
             </div>
         </Router>
