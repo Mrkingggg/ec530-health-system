@@ -253,6 +253,6 @@ Admin User Stories:
 ( A user can have different roles, e.g.,  <br/>
 - a user can be a patient and/or a doctor <br/>
 - A user can be a family member and/or a patient <br/>
-- Provide interfaces to third party medical device makers (Thermometer, Pulse, Blood pressure, Glucometer, etc.) to have their devices feed data to the system
+- Provide interfaces to third party medical device makers (Thermometer, Pulse, Blood pressure, Glucometer, etc.) to have their devices feed data to the system <br/>
 - Ability to disable or enable any device maker or application developer
-
+ <br/>
