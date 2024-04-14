@@ -319,10 +319,10 @@ def change_device_status(deviceId):
         db.session.rollback()
         return jsonify({"error": e}), 500
 
-@app.route('api/MP/browsePatient', methods=['GET'])
+@app.route('/api/MP/browsePatient', methods=['GET'])
 def browse_patients():
 
-    patients = db.session.query(Users).join(rolesmap, Users.userId == rolesmap.c.userId).join(Role, rolesmap.c.roleId == Role.roleId).filter(Role.rolename == 'patient').all()
+    patients = db.session.query(Users).join(rolesmap, Users.userId == rolesmap.c.userId).join(Role, rolesmap.c.roleId == Role.roleId).filter(Role.roleId == 1).all()
     result = [
         {
             'userId': user.userId,

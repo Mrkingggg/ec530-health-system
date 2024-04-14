@@ -1,11 +1,12 @@
 # ec530 final project
 
-
 ## Schema of API:
+
 (ALL APIs needed defined in .yaml files ... within the repository)
 
 1. Data Reading Module: GET
    - measurementid
+
 - response:
   - 200: success, with response body
   - 404: error ( not found )
@@ -60,6 +61,7 @@
        - failure: 400
 
 6. User Management
+
    - Add User:
      - Post: url: /api/users/add
      - parameters:
@@ -83,19 +85,18 @@
        - failure: 400
 
 7. View Device
+
    - GET: /api/admin/viewDevice
-   - response: All Device information in Nested json.  <br/> <br/>
-   <img width="1031" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/3b7c3e4e-5104-4888-ac10-a374bb363c82">
-<br/>
+   - response: All Device information in Nested json. <br/> <br/>
+     <img width="1031" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/3b7c3e4e-5104-4888-ac10-a374bb363c82">
+     <br/>
 
 8. Delete Device
 
-   - DELETE: /api/admin/deldev/<int:deviceId>  
-   - response:
-      - 400: "bad request": "device does not exist."
-      - 200: "message": "Device deleted successfully" <br/> <br/>
-   <img width="1022" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/6f870ed0-437d-48bf-8700-8d060b5fd492">
-<br/>
+   - DELETE: /api/admin/deldev/<int:deviceId>
+   - response: - 400: "bad request": "device does not exist." - 200: "message": "Device deleted successfully" <br/> <br/>
+     <img width="1022" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/6f870ed0-437d-48bf-8700-8d060b5fd492">
+     <br/>
 
 9. Change Device Status
 
@@ -104,11 +105,14 @@
    - response:
      - 404: "error":"Device not found" / "missing status"
      - 200: "message": "Device status updated."
-   <br/>
-   <img width="1312" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/9524955e-6a4e-4730-84d8-7fb6b79d02e0">
+       <br/>
+       <img width="1312" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/9524955e-6a4e-4730-84d8-7fb6b79d02e0">
 
+10. Browse all patients
+    - GET: api/MP/browsePatient
 
 ## Database Schema -- relational sql ( in dbschema.sql )
+
 ### Corresponding DB tables' python-flask definition in /backend/app.py
 
 1. table users:
@@ -213,8 +217,11 @@ The notification queue system in the Flask application handles asynchronous noti
 - git push origin main (to remote repo)
 
 ## Web Application:
+
 More results screenshots in /screenshot.
+
 ### General Functions:
+
 <br/>
 1. Create new accounts.
    Fill all fields ( role's field is multiple selection ). Click Add User and jump to login page.
@@ -237,6 +244,7 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
 <br/>
 
 ### Admin Functions:
+
 1. Change Roles
    <br/>
    <img width="804" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/993140c8-9618-4966-95eb-5f04f5c2722d">
@@ -256,3 +264,5 @@ Admin User Stories:
 - Provide interfaces to third party medical device makers (Thermometer, Pulse, Blood pressure, Glucometer, etc.) to have their devices feed data to the system <br/>
 - Ability to disable or enable any device maker or application developer
  <br/>
+
+### MP(Doctor/Nurse) Funcions:
