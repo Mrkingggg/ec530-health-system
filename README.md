@@ -1,8 +1,8 @@
 # ec530 final project
 
-### ALL APIs needed defined in .yaml files ... within the repository
 
-### Schema of API data:
+## Schema of API:
+(ALL APIs needed defined in .yaml files ... within the repository)
 
 1. Data Reading Module: GET
    - measurementid
@@ -108,7 +108,8 @@
    <img width="1312" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/9524955e-6a4e-4730-84d8-7fb6b79d02e0">
 
 
-## Database Schema -- relational sql ( implemented with mysql in file dbschema.sql )
+## Database Schema -- relational sql ( in dbschema.sql )
+### Corresponding DB tables' python-flask definition in /backend/app.py
 
 1. table users:
 
@@ -152,14 +153,7 @@
    - appointmentTime
    - status
 
-## API implement with Flask_restful framework
-
-- Implemented stub in stub_datareading.py and stub_device.py
-  - If device id not found in existing list, return 404 not found
-  - If missing information in requests, return 400 bad request
-  - Normal: 200: Success
-
-## app.py
+## app.py （ /backend/app.py ）
 
 ### Implement restful api to interact with database for :
 
@@ -219,7 +213,7 @@ The notification queue system in the Flask application handles asynchronous noti
 - git push origin main (to remote repo)
 
 ## Web Application:
-
+More results screenshots in /screenshot.
 ### General Functions:
 <br/>
 1. Create new accounts.
@@ -252,4 +246,13 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
 3. View and manage devices ( change status / delete devices ) <br/> <img width="1345" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/96a5d360-2489-4dd0-9934-3bfb9ff070bd">
 
 <br/>
-
+Admin User Stories:
+- Add users to the system:
+- Users should be added to the system and cannot register before being added to the system
+- Assign and Change Roles to users <br/>
+( A user can have different roles, e.g.,  <br/>
+- a user can be a patient and/or a doctor <br/>
+- A user can be a family member and/or a patient <br/>
+- Provide interfaces to third party medical device makers (Thermometer, Pulse, Blood pressure, Glucometer, etc.) to have their devices feed data to the system <br/>
+- Ability to disable or enable any device maker or application developer
+ <br/>
