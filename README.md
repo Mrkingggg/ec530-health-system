@@ -267,8 +267,9 @@ Admin User Stories:
 - Ability to disable or enable any device maker or application developer
  <br/>
 
-### MP(Doctor/Nurse) Funcions:
+### MP(Doctor/Nurse) Functions:
+
 1. Browse Patients<br/>
-<img width="1224" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/61c9fce0-f015-4097-bc17-22c48b4c58ce">
+   <img width="1224" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/61c9fce0-f015-4097-bc17-22c48b4c58ce">
 
 2.
