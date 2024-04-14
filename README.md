@@ -111,7 +111,7 @@
 10. Browse all patients
     - GET: api/MP/browsePatient <br/>
     API test:
-<img width="792" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/b2c28db0-5318-4f89-be55-78bad4766efe">
+    <img width="792" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/b2c28db0-5318-4f89-be55-78bad4766efe">
 
 ## Database Schema -- relational sql ( in dbschema.sql )
 
