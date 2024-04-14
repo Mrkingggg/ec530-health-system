@@ -251,8 +251,8 @@ Admin User Stories:
 - Users should be added to the system and cannot register before being added to the system
 - Assign and Change Roles to users <br/>
 ( A user can have different roles, e.g.,  <br/>
-a user can be a patient and/or a doctor <br/>
-A user can be a family member and/or a patient <br/>
+- a user can be a patient and/or a doctor <br/>
+- A user can be a family member and/or a patient <br/>
 - Provide interfaces to third party medical device makers (Thermometer, Pulse, Blood pressure, Glucometer, etc.) to have their devices feed data to the system
 - Ability to disable or enable any device maker or application developer
 
