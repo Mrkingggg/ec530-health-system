@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom"; // 导入 Link
 import { logout } from "../services/userService"; 
+import "./comp.css"
 
 function AdminHome() {
 

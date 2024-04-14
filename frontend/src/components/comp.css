@@ -1,3 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+
 .table-center {
     width: 80%;
     margin-left: auto;
@@ -11,3 +19,13 @@
     text-align: center;
     padding: 8px;
 }
+
+.button-jump {
+    background-color: #106466;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }

@@ -2,12 +2,22 @@ import React from "react";
 import "./comp.css"
 import { useEffect, useState } from "react";
 import { browse_patient } from "../services/userService";
+import { useNavigate } from "react-router-dom";
 function BrowsePatient(){
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(5);
+    const navigate = useNavigate();
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const lastItemIndex = currentPage * itemsPerPage;
+    const firstItemIndex = lastItemIndex - itemsPerPage;
+    const currentItems = patients.slice(firstItemIndex, lastItemIndex);
+    const totalPages = Math.ceil(patients.length / itemsPerPage);
 
+    const handleReturn = async () =>{
+        navigate('/mphome')
+    }
     useEffect(() => {
         const fetchPatients = async () => {
             setLoading(true);
@@ -25,9 +35,10 @@ function BrowsePatient(){
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
-    
+
     return (
         <div>
+            <h1>Browse All Patients</h1><br/>
             <table className="table-center">
                 <thead>
                     <tr>
@@ -40,7 +51,7 @@ function BrowsePatient(){
                     </tr>
                 </thead>
                 <tbody>
-                    {patients.map(patient => (
+                    {currentItems.map(patient => (
                         <tr key={patient.userId}>
                             <td>{patient.userId}</td>
                             <td>{patient.fullname}</td>
@@ -51,8 +62,15 @@ function BrowsePatient(){
                         </tr>
                     ))}
                 </tbody>
-            </table>
+            </table><br/>
+            <div>
+                <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage <= 1}>Previous</button>
+                <span> Page {currentPage} of {totalPages} </span>
+                <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage >= totalPages}>Next</button>
+            </div><br/>
+            <button onClick={handleReturn}>Return to MPHome</button> 
         </div>
+        
 
     );
 

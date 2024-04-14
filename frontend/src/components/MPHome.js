@@ -1,9 +1,7 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom"; // 导入 Link
 import { logout } from "../services/userService"; 
-// import { BrowserRouter as Link } from 'react-router-dom';
-// import Logout from "./Logout";
-// import ChgRForm from "./ChgRForm";
+import "./comp.css"
 
 function MPHome() {
     const navigate = useNavigate();
@@ -22,7 +20,7 @@ function MPHome() {
         <div>
             <h1>Doctor/Nurse Home</h1><br/> 
             <br/><br/>
-            <Link to="/browsepatients">Browse Patients.</Link><br/><br/><br/>
+            <Link to="/browsepatients" className="button-jump">Browse Patients.</Link><br/><br/><br/>
             <button onClick={handleLogout}>Logout</button> {/* 登出按钮 */}
         </div>
     );

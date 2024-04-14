@@ -15,7 +15,6 @@ const DevicesTable = () => {
     const lastItemIndex = currentPage * itemsPerPage;
     const firstItemIndex = lastItemIndex - itemsPerPage;
     const currentItems = devices.slice(firstItemIndex, lastItemIndex);
-
     const totalPages = Math.ceil(devices.length / itemsPerPage);
 
     const changeStatus = (device) => {
