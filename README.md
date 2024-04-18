@@ -229,8 +229,7 @@ More results screenshots in /screenshot.
 1. Create new accounts.
    Fill all fields ( role's field is multiple selection ). Click Add User and jump to login page.
 
-<br/>
-![create_user](https://github.com/Mrkingggg/ec530-health-system/assets/105716817/5c6404ff-a19d-4c8d-b755-738b02cde618)
+   ![create_user](https://github.com/Mrkingggg/ec530-health-system/assets/105716817/5c6404ff-a19d-4c8d-b755-738b02cde618)
 
 
 <br/>
