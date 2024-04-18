@@ -278,15 +278,17 @@ Admin User Stories:
 
 <br/>
 Medical Professional (MP) User Stories
-Browse Patients
-Assign a medical device to a Patient
-Assign Alert and scheduling for medical measurement, e.g., 
-Patient to measure blood pressure daily.  MP will receive an alert if it not done. 
-Temperature is higher or lower than a value.  MP will get an alert if the measurement is outside acceptable range
-MP can input data for any patient
-MP can chat with patients using text, voice or videos.
-MP can read transcripts of Patient uploaded videos and messages
-MP can search for keywords in messages and chats
-MP have a calendar where they can show open time slots for appointments
-MP can see all appointments booked at any time
+
+
+- Browse Patients
+- Assign a medical device to a Patient
+- Assign Alert and scheduling for medical measurement, e.g.,
+- Patient to measure blood pressure daily.  MP will receive an alert if it not done.
+- Temperature is higher or lower than a value.  MP will get an alert if the measurement is outside acceptable range
+- MP can input data for any patient
+- MP can chat with patients using text, voice or videos.
+- MP can read transcripts of Patient uploaded videos and messages
+- MP can search for keywords in messages and chats
+- MP have a calendar where they can show open time slots for appointments
+- MP can see all appointments booked at any time
 
