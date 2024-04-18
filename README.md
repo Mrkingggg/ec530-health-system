@@ -242,7 +242,7 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
 - Login: Directly input username and password. If both are correct, the web jumps to user page.
 - Create a new account: jump to create page.
 
-![home_page](https://github.com/Mrkingggg/ec530-health-system/assets/105716817/87a15603-161e-4751-ab84-1ee434b0a88f)
+<img src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/87a15603-161e-4751-ab84-1ee434b0a88f" width="600" height="400" alt="home_page">
 
 
 <br/>
@@ -259,13 +259,14 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
 
 <br/>
 Admin User Stories:
+
+
 - Add users to the system:
 - Users should be added to the system and cannot register before being added to the system
-- Assign and Change Roles to users <br/>
-( A user can have different roles, e.g.,  <br/>
-- a user can be a patient and/or a doctor <br/>
-- A user can be a family member and/or a patient <br/>
-- Provide interfaces to third party medical device makers (Thermometer, Pulse, Blood pressure, Glucometer, etc.) to have their devices feed data to the system <br/>
+- Assign and Change Roles to users( A user can have different roles, e.g.,
+- a user can be a patient and/or a doctor
+- A user can be a family member and/or a patient
+- Provide interfaces to third party medical device makers (Thermometer, Pulse, Blood pressure, Glucometer, etc.) to have their devices feed data to the system
 - Ability to disable or enable any device maker or application developer
  <br/>
 
@@ -274,4 +275,21 @@ Admin User Stories:
 1. Browse Patients<br/>
    <img width="1224" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/61c9fce0-f015-4097-bc17-22c48b4c58ce">
 
-2.
+
+
+<br/>
+Medical Professional (MP) User Stories
+
+
+- Browse Patients
+- Assign a medical device to a Patient
+- Assign Alert and scheduling for medical measurement, e.g.,
+- Patient to measure blood pressure daily.  MP will receive an alert if it not done.
+- Temperature is higher or lower than a value.  MP will get an alert if the measurement is outside acceptable range
+- MP can input data for any patient
+- MP can chat with patients using text, voice or videos.
+- MP can read transcripts of Patient uploaded videos and messages
+- MP can search for keywords in messages and chats
+- MP have a calendar where they can show open time slots for appointments
+- MP can see all appointments booked at any time
+
