@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Make the container's port 5000 available to the outside
-EXPOSE 5000
+EXPOSE 5050
 
 # Run the application
 CMD ["python", "app.py"]
