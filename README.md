@@ -241,7 +241,8 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
 
 - Login: Directly input username and password. If both are correct, the web jumps to user page.
 - Create a new account: jump to create page.
-  <br/><br/>
+
+  
   <img width="701" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/08ebccfb-b506-4101-a1b4-b5900a5f3b55">
 
 <br/>
