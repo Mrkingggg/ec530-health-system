@@ -242,7 +242,7 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
 - Login: Directly input username and password. If both are correct, the web jumps to user page.
 - Create a new account: jump to create page.
 
-![home_page](https://github.com/Mrkingggg/ec530-health-system/assets/105716817/87a15603-161e-4751-ab84-1ee434b0a88f)
+<img src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/87a15603-161e-4751-ab84-1ee434b0a88f" width="500" height="400" alt="home_page">
 
 
 <br/>
