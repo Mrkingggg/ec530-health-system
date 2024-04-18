@@ -230,7 +230,8 @@ More results screenshots in /screenshot.
    Fill all fields ( role's field is multiple selection ). Click Add User and jump to login page.
 
 <br/>
-<img width="1051" alt="image" src="https://github.com/Mrkingggg/ec530-finalproj-healthsys/assets/105716817/c7a9177b-60da-4e1f-abb1-39273d1052be">
+![create_user](https://github.com/Mrkingggg/ec530-health-system/assets/105716817/5c6404ff-a19d-4c8d-b755-738b02cde618)
+
 
 <br/>
 <br/>
