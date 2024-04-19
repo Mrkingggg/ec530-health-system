@@ -35,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install flake8 pytest pymysql flask flask_restful flask_marshmallow Werkzeug flask_jwt_extended flask_migrate flask_sqlalchemy marshmallow-sqlalchemy
+          python -m pip install flake8 pytest pymysql flask flask_restful flask_marshmallow flask_cors Werkzeug flask_jwt_extended flask_migrate flask_sqlalchemy marshmallow-sqlalchemy
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       # Run Celery Workers in background to run performed tasks
       - name: Run Celery Workers
