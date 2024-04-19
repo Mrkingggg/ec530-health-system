@@ -255,7 +255,17 @@ def login():
     user_roles = [role.roleId for role in user.roles]
     # print("User roles:", user_roles)s
     if int(sel_role) in user_roles:
-        return jsonify({"message": "Login Successfully", "role": int(sel_role)}), 200
+        
+        return jsonify({
+            "userId":user.userId,
+            "username":username,
+            "date of birth":user.dob,
+            "gender":user.gender,
+            "email":user.email,
+            "fullname":user.fullname,
+            "role": int(sel_role)
+        }), 200
+    
     else:
         return jsonify({"error": "User does not have the selected role"}), 401
 

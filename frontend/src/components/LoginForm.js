@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useAuth } from '../components/AuthContext'; // 确保从正确的路径导入
+import { useAuth } from '../components/AuthContext'; 
+// import { loginUser } from '../services/userService';
 
 function LoginForm() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [role, setRole] = useState(3); // 默认角色为patient
+    const [role, setRole] = useState(3); 
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
@@ -23,20 +24,33 @@ function LoginForm() {
         setMessage('');
     
         try {
-            const data = await login(username, password, role);
-            setMessage(data.message);
-            // 假设登录成功后，后端返回的data中包含角色信息
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers:{
+                    'Content-Type':'application/json',
+                },
+                body: JSON.stringify({ username, password, role })
+            });
+            const data = await response.json();
             
-            switch (data.role) { // 使用返回的角色信息来决定跳转目标
+            if(!response.ok){
+                throw new Error(data.error || data.bad_request || 'Login failed');
+            }
+            console.log('login storing data...',data)
+            login(data)
+            setMessage(data.message);
+            
+            
+            switch (data.role) { 
                 
                 case 3:
-                    navigate('/adminhome'); // 跳转到管理员主页
+                    navigate('/adminhome'); 
                     break;
                 case 2:
-                    navigate('/mphome'); // 跳转到医生/护士主页
+                    navigate('/mphome'); 
                     break;
                 case 1:
-                    navigate('/patienthome'); // 跳转到患者主页
+                    navigate('/patienthome'); 
                     break;
                 default:
                     setError('Unknown role');

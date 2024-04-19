@@ -36,7 +36,7 @@ export const changeRole = async (userId, newRoles) => {
     }
 };
 
-export const login = async(username, password, role) =>{
+export const loginUser = async(username, password, role) =>{
     try{
         const response = await fetch('/api/auth/login', {
             method: 'POST',

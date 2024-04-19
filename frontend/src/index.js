@@ -7,9 +7,8 @@ import { AuthProvider } from './components/AuthContext';
 const container = document.getElementById('root');
 const root = createRoot(container); // 创建一个 root
 root.render(
-    <React.StrictMode>
-        <AuthProvider>
-            <App />
-        </AuthProvider>
-    </React.StrictMode>
+    <AuthProvider>
+        <App />
+    </AuthProvider>
+    
 );
