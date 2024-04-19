@@ -7,6 +7,8 @@ services:
     volumes:
       - ./backend:/app
     restart: always
+    networks:
+      - app-network
 
   frontend:
     build: ./frontend
@@ -16,6 +18,9 @@ services:
       - ./frontend:/app
       - /app/node_modules
     restart: always
+    networks:
+      - app-network
+
 networks:
   app-network:
     driver: bridge
