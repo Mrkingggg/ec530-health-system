@@ -336,14 +336,21 @@ def browse_patients():
     ]
     return jsonify(result)
 
-@app.route('api/patient/makeAppointment', methods=['POST'])
+@app.route('/api/patient/makeAppointment', methods=['POST'])
 def make_appointment():
     data = request.get_json()
     doctorId = data.get('doctorId')
     patientId = data.get('patientId')
     appointment_time = data.get('appointment_time')
+    try:
+        apt_parse = datetime.strptime(appointment_time, '%Y-%m-%d').date()
+        appointment = Appointment(patientId=patientId, doctorId=doctorId, appointment_time=apt_parse)
+        db.session.add(appointment)
+        db.session.commit()
+        return jsonify({"message":"appointment scheduled!"}),200
+    except Exception as e:
+            db.session.rollback()
+            return jsonify({"error": e}), 500
+    
 
 
-if __name__ == '__main__':
-    # db.create_all()
-    app.run(host='0.0.0.0', port=5000, debug=True)
