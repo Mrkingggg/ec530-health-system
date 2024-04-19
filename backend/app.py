@@ -336,7 +336,14 @@ def browse_patients():
     ]
     return jsonify(result)
 
-# @app.route()
+@app.route('api/patient/makeAppointment', methods=['POST'])
+def make_appointment():
+    data = request.get_json()
+    doctorId = data.get('doctorId')
+    patientId = data.get('patientId')
+    appointment_time = data.get('appointment_time')
+
+
 if __name__ == '__main__':
     # db.create_all()
     app.run(host='0.0.0.0', port=5000, debug=True)
