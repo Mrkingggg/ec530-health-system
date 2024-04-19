@@ -353,4 +353,21 @@ def make_appointment():
             return jsonify({"error": e}), 500
     
 
+@app.route('/api/MP/view_appointment', methods=['GET'])
+def view_appointment():
+    doctor_id = request.args.get('doctorId')
+    if not doctor_id:
+        return jsonify({'error': 'doctor_id not found'}), 400
+
+    appointments = Appointment.query.filter_by(doctorId=doctor_id).all()
+    appointments_data = [{
+        'appointmentId': appt.appointmentId,
+        'doctorId': appt.doctorId,
+        'patientId': appt.patientId,
+        'appointmentTime': appt.appointmentTime.isoformat(),
+        'status': appt.status
+    } for appt in appointments]
+
+    return jsonify(appointments_data), 200
+
 

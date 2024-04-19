@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { login } from "../services/userService";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../components/AuthContext'; // 确保从正确的路径导入
 
 function LoginForm() {
     const [username, setUsername] = useState('');
@@ -9,6 +9,7 @@ function LoginForm() {
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     const RoleList = {
         PATIENT: 1,
