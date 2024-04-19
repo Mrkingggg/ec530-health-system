@@ -22,7 +22,7 @@ const UserForm = () => {
         dob: '',
         fullname: '',
         password: '',
-        gender: '',
+        gender: Gender.FEMALE,
         role_ids: []
     });
 
@@ -94,7 +94,7 @@ const UserForm = () => {
             <br/>
             <label>
                 Gender:
-                <select value={userData.gender} onChange={handleChange}>
+                <select name="gender" value={userData.gender} onChange={handleChange}>
                     <option value = {Gender.FEMALE}>Female</option>
                     <option value = {Gender.MALE}>Male</option>
                     <option value = {Gender.OTHER}>Other</option>

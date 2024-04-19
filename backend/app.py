@@ -112,11 +112,11 @@ def add_user():
     fullname = data.get('fullname')
     password = data.get('password')
     role_ids = data.get('role_ids',[])
-
+    gender = data.get('gender')
     # if not validate_date(dob):
     #         return jsonify({"error":"Invalid date format. Please use YYYY-MM-DD format."}), 400
     
-    if not all([username, email, dob, fullname, password]):
+    if not all([username, email, dob, fullname, password, gender]):
         return jsonify({"error":"Missing information"}),400
     
     if Users.query.filter_by(username=username).first():
@@ -126,7 +126,7 @@ def add_user():
 
     try:
         dob_parse = datetime.strptime(dob, '%Y-%m-%d').date()
-        user = Users(username=username, email=email, dob=dob_parse, fullname=fullname, password = hash_psw)
+        user = Users(username=username, email=email, dob=dob_parse, fullname=fullname, password = hash_psw, gender=gender)
         db.session.add(user)
         db.session.flush() # assign id ?
         for role_id in role_ids:
