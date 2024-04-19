@@ -12,16 +12,6 @@ import AddDevForm from './components/AddDevForm';
 import ManageDev from './components/ManageDev';
 import BrowsePatient from './components/BrowsePatient';
 
-
-// Make sure users have logged in before other operations.
-// Block Users haven't logged in to reach any web pages but home
-// const isAuthenticated = () => {
-//     return !!localStorage.getItem('user');
-// };
-
-// const ProtectedRoute = () => {
-//     return isAuthenticated() ? <Outlet /> : <Navigate to="/" replace />;
-// };
 const Home = () =>(
     <div>
         <h1>Health App -- Home Page</h1>
