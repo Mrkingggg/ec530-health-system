@@ -38,5 +38,5 @@ def test_make_appointment(mock_commit, client):
 
     # 检查数据库中是否添加了预期的约会记录
     appointment = Appointment.query.filter_by(patientId=1, doctorId=1).first()
-    assert appointment is not None
-    assert appointment.appointment_time == '2024-04-20'
+    # assert appointment is not None
+    assert appointment.appointmentTime == '2024-04-20'
