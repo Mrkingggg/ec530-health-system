@@ -344,7 +344,7 @@ def make_appointment():
     appointment_time = data.get('appointment_time')
     try:
         apt_parse = datetime.strptime(appointment_time, '%Y-%m-%d').date()
-        appointment = Appointment(patientId=patientId, doctorId=doctorId, appointment_time=apt_parse)
+        appointment = Appointment(patientId=patientId, doctorId=doctorId, appointmentTime=apt_parse)
         db.session.add(appointment)
         db.session.commit()
         return jsonify({"message":"appointment scheduled!"}),200
