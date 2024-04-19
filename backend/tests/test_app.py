@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from app import app
+from app import app, Appointment
 
 import sys
 import os
