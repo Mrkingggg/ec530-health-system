@@ -14,7 +14,8 @@ from datetime import datetime
 # pip install -r requirements.txt -- apply the requirements.txt in various environments.
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+
 
 
 #connect to my database
