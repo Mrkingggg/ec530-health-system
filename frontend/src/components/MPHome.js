@@ -8,6 +8,8 @@ function MPHome() {
     const navigate = useNavigate();
     const [appointments, setAppointments] = useState([]);
     const { user } = useAuth();
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(5);
 
     useEffect(() => {
         console.log(user);
@@ -22,6 +24,11 @@ function MPHome() {
                 .catch(error => console.error('获取数据出错: ', error));
         }
     }, [user]);
+    const lastItemIndex = currentPage * itemsPerPage;
+    const firstItemIndex = lastItemIndex - itemsPerPage;
+    const currentItems = appointments.slice(firstItemIndex, lastItemIndex);
+    const totalPages = Math.ceil(appointments.length / itemsPerPage);
+
     const handleLogout = async () => {
         try {
             await logout();
@@ -34,18 +41,52 @@ function MPHome() {
 
     return (
         <div>
-            <h1>Doctor/Nurse Home</h1><br/> 
-            <h1>Appointments</h1><br/> <br/> 
-            <ul>
-                {appointments.map(appt => (
-                    <li key={appt.appointmentId}>
-                        patientID: {appt.patientId}, appointment_time: {appt.appointmentTime}, status: {appt.status}
-                    </li>
-                ))}
-            </ul>
-            <br/><br/>
-            <Link to="/browsepatients" className="button-jump">Browse Patients.</Link><br/><br/><br/>
-            <button onClick={handleLogout}>Logout</button> 
+            <div>
+              <h1>Doctor/Nurse HomePage</h1><br/><hr/>
+            </div>
+            <div className="layout">
+                <div className="personal-info"> 
+                    <h2>MP Personal Info.</h2><br/>
+                    <p><strong>Welcome! </strong>  {user["fullname"]}</p><br/>
+                    <p><strong>Email:</strong>  {user["email"]}</p><br/>
+                    <p><strong>Date of Birth:</strong>  {user["date of birth"]}</p><br/>
+
+                </div>
+                <div className="appointments-section">
+                    <h2>Your Appointments</h2><br/> 
+                    <table className="table-center">
+                        <thead>
+                            <tr>
+                                <th>patientID</th>
+                                <th>appointment_time</th>
+                                <th>status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {currentItems.map(appt => (
+                                <tr key={appt.appointmentId}>
+                                    <td>{appt.patientId}</td>
+                                    <td>{appt.appointmentTime}</td>
+                                    <td>{appt.status}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table><br/>
+                    <div>
+                        <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage <= 1}>Previous</button>
+                        <span> Page {currentPage} of {totalPages} </span>
+                        <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage >= totalPages}>Next</button>
+                    </div>
+                    <br/><br/>
+                    
+                </div>
+            </div>
+                <Link to="/browsepatients" className="button-jump">Browse Patients.</Link>
+                <br/><br/><br/>
+                <button onClick={handleLogout}>Logout</button> 
+            <div>
+
+            </div>
         </div>
     );
 }

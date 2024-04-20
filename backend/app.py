@@ -380,4 +380,8 @@ def view_appointment():
 
     return jsonify(appointments_data), 200
 
-
+@app.route('/api/MP/addMeasureData', methods=['POST'])
+def add_measurement():
+    data = request.get_json()
+    patientId = data.get('patientId')
+    value = data.get('value') # design a form / table for patient to store health data
