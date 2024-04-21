@@ -1,4 +1,4 @@
-# ec530 final project
+# ec530 health system project
 
 ## Schema of API:
 
