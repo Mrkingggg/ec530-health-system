@@ -314,7 +314,7 @@ Medical Professional (MP) User Stories
 
 
 <img width="652" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/391f7dc4-5595-4b09-960f-320c208f486c">
-
+<br/>
 
 <img width="1439" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/1ddaf1c6-e833-42d5-970f-e6ede30ca768">
 
