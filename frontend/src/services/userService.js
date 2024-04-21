@@ -136,3 +136,24 @@ export const browse_patient = async() => {
         throw error
     }
 }
+
+export const add_patient_data = async(userId, deviceId, value, measuretime) => {
+    try{
+        const response = await fetch('/api/MP/addMeasureData', {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({userId, deviceId, value, measuretime})
+        });
+        const data = response.json()
+
+        if(!response.ok){
+            throw new Error(data.error || data.bad_request || 'Add patient data failed');
+        }
+        return data;
+
+    }catch(error){
+        throw error;
+    }
+}

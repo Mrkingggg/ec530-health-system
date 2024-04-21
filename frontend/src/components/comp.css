@@ -31,22 +31,11 @@
   }
 
 
-
-.layout {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-}
 .header-center {
   text-align: center;
   width: 100%;
 }
 
-.personal-info, .appointments-section {
-    flex: 1;
-    margin: 10px;
-    background-color:#DAF6FF;
-}
 
 .title{
   /* margin: 10px; */
@@ -58,3 +47,65 @@
 .browse-body {
   background-color:#E1F6FD;
 }
+
+
+
+/* .layout {
+  display: flex;
+  flex-direction: column;
+} */
+
+.header {
+  align-self: flex-start;
+  padding: 20px;
+  width: 50%;
+  line-height:1.5;
+}
+
+.personal-info {
+  margin-top: 10px;
+  background-color: #F6F0FD;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.appointments-section, .add-patient-data {
+  width: 100%;
+  background-color: #D1F4FE;
+}
+
+.headers-container {
+  display: flex;      
+  justify-content: space-between; 
+  align-items: flex-start;  
+  width: 100%;          
+}
+
+.combine {
+  flex: 1;              
+  margin: 10px;        
+}
+
+.layout {
+  width: 100%;
+  max-width: 1200px; 
+  margin: auto;
+  
+  
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  line-height: 1.5;
+}
+
+.left-section {
+  flex: 3; 
+  padding-right: 20px; 
+}
+
