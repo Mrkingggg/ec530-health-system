@@ -294,10 +294,12 @@ Medical Professional (MP) User Stories
 - MP can see all appointments booked at any time
 
 
+
+
 ### Hello App Framework
 
 1. helloapp() function in app.py. Definition of helloapp API, return a message of hello app.
-
+<br/>
 
 <img width="435" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/2f649a25-7bd2-470f-9d7d-894bb4efbc76">
 
