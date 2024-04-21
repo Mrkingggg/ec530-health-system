@@ -390,7 +390,7 @@ def add_measurement():
     deviceId = data.get('deviceId')
     value = data.get('value')
     measuretime = data.get('measuretime')
-    met =  datetime.strptime(measuretime, "%Y-%m-%d %H:%M:%S")
+    met =  datetime.strptime(measuretime, "%Y-%m-%dT%H:%M")
     if None in [userId, deviceId, value, met]:
         return jsonify({"error":"Missing info"}),400
     try:

@@ -52,6 +52,7 @@ const DevicesTable = () => {
 
     return (
         <div>
+            <h1>Browse All Devices</h1><br/>
             <table className='table-center'>
                 <thead>
                     <tr>

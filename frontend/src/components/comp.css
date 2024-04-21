@@ -64,7 +64,7 @@
 
 .personal-info {
   margin-top: 10px;
-  background-color: #F6F0FD;
+  background-color: #FCFEF0;
 }
 
 .content {
@@ -75,7 +75,7 @@
 
 .appointments-section, .add-patient-data {
   width: 100%;
-  background-color: #D1F4FE;
+  background-color: #F0FDFE;
 }
 
 .headers-container {

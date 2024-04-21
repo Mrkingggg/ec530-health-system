@@ -12,6 +12,7 @@ import AddDevForm from './components/AddDevForm';
 import ManageDev from './components/ManageDev';
 import BrowsePatient from './components/BrowsePatient';
 import HelloApp from './components/HelloApp';
+import DevicesTable from './components/DeviceTable';
 
 const Home = () =>(
     <div>
@@ -43,6 +44,8 @@ function App(){
                     <Route path="/managedev" element={<ManageDev />} />
                     <Route path="/helloapp" element={<HelloApp />} />
                     <Route path="/browsepatients" element={<BrowsePatient />} />
+                    <Route path="/browsedev" element={<DevicesTable />} />
+
                 </Routes>
             </div>
         </Router>

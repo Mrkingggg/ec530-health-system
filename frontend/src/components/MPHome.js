@@ -17,7 +17,7 @@ function MPHome() {
             fetch(`/api/MP/view_appointment?doctorId=${user.userId}`)
                 .then(response => response.json())
                 .then(data => setAppointments(data))
-                .catch(error => console.error('获取数据出错: ', error));
+                .catch(error => console.error('error:', error));
         }
     }, [user]);
 
@@ -81,7 +81,9 @@ function MPHome() {
                     <AddPatientData />
                 </div>
             </div>
-            <Link to="/browsepatients" className="button-jump">Browse All Patients</Link><br/><br/>
+            <Link to="/browsepatients" className="button-jump">Browse All Patients</Link>&nbsp;&nbsp;&nbsp;
+            <Link to="/browsedev" className="button-jump">Browse All Devices</Link><br/><br/>
+
             <button onClick={handleLogout}>Logout</button>
         </div>
     );
