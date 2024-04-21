@@ -1,4 +1,4 @@
-# ec530 final project
+# ec530 health system project
 
 ## Schema of API:
 
@@ -292,4 +292,29 @@ Medical Professional (MP) User Stories
 - MP can search for keywords in messages and chats
 - MP have a calendar where they can show open time slots for appointments
 - MP can see all appointments booked at any time
+
+
+
+
+## Hello App Framework
+
+1. helloapp() function in app.py. Definition of helloapp API, return a message of hello app.
+<br/>
+
+<img width="435" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/2f649a25-7bd2-470f-9d7d-894bb4efbc76">
+
+
+2. fetch this api response in HelloApp.js
+
+
+<img width="596" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/33981dc7-36d2-43c1-b1bf-5e755e218407">
+
+
+3. add HelloApp.js to homepage.
+
+
+<img width="652" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/391f7dc4-5595-4b09-960f-320c208f486c">
+<br/>
+
+<img width="1439" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/1ddaf1c6-e833-42d5-970f-e6ede30ca768">
 
