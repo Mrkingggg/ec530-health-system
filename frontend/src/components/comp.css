@@ -45,8 +45,16 @@
 .personal-info, .appointments-section {
     flex: 1;
     margin: 10px;
+    background-color:#DAF6FF;
+}
+
+.title{
+  /* margin: 10px; */
+  padding: 20px;
+  background-color: #EDEFFF;
 }
 
 
-
-
+.browse-body {
+  background-color:#E1F6FD;
+}

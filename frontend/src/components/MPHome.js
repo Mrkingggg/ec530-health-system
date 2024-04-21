@@ -38,15 +38,19 @@ function MPHome() {
             // 处理错误情况（例如显示错误消息）
         }
     };
+    function formatDateTime(dateTimeString) {
+        return dateTimeString.replace('T', ' ');
+      }
 
     return (
         <div>
-            <div>
-              <h1>Doctor/Nurse HomePage</h1><br/><hr/>
+            <div className="title">
+              <h1>Doctor/Nurse HomePage</h1><br/>
             </div>
             <div className="layout">
-                <div className="personal-info"> 
-                    <h2>MP Personal Info.</h2><br/>
+                <div className="personal-info" > 
+
+                    <h2>MP Personal Info.</h2><br/><br/>
                     <p><strong>Welcome! </strong>  {user["fullname"]}</p><br/>
                     <p><strong>Email:</strong>  {user["email"]}</p><br/>
                     <p><strong>Date of Birth:</strong>  {user["date of birth"]}</p><br/>
@@ -66,7 +70,7 @@ function MPHome() {
                             {currentItems.map(appt => (
                                 <tr key={appt.appointmentId}>
                                     <td>{appt.patientId}</td>
-                                    <td>{appt.appointmentTime}</td>
+                                    <td>{formatDateTime(appt.appointmentTime)}</td>
                                     <td>{appt.status}</td>
                                 </tr>
                             ))}

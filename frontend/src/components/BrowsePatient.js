@@ -5,7 +5,7 @@ import { browse_patient } from "../services/userService";
 import { useNavigate } from "react-router-dom";
 function BrowsePatient(){
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(5);
+    const [itemsPerPage] = useState(10);
     const navigate = useNavigate();
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -18,6 +18,9 @@ function BrowsePatient(){
     const handleReturn = async () =>{
         navigate('/mphome')
     }
+    function formatDateTime(dateTimeString) {
+        return dateTimeString.replace('T', ' ');
+      }
     useEffect(() => {
         const fetchPatients = async () => {
             setLoading(true);
@@ -37,7 +40,7 @@ function BrowsePatient(){
     if (error) return <p>{error}</p>;
 
     return (
-        <div>
+        <div className="browse-body">
             <h1>Browse All Patients</h1><br/>
             <table className="table-center">
                 <thead>
@@ -56,7 +59,7 @@ function BrowsePatient(){
                             <td>{patient.userId}</td>
                             <td>{patient.fullname}</td>
                             <td>{patient.gender}</td>
-                            <td>{patient.dob}</td>
+                            <td>{formatDateTime(patient.dob)}</td>
                             <td>{patient.username}</td>
                             <td>{patient.email}</td>
                         </tr>

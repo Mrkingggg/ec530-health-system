@@ -45,7 +45,7 @@ class Measurements(db.Model):
     deviceId  = db.Column(db.Integer, db.ForeignKey('device.deviceId'))
     userId = db.Column(db.Integer, db.ForeignKey('users.userId'))
     value = db.Column(db.Numeric(10, 2), nullable=True) 
-    measuretime = db.Column('measuretime', db.DateTime, nullable=False, server_default=db.func.current_timestamp())
+    measuretime = db.Column(db.DateTime, nullable=False, server_default=db.func.current_timestamp())
 
 class Users(db.Model):
     __tablename__ = 'users'
@@ -353,7 +353,7 @@ def make_appointment():
     patientId = data.get('patientId')
     appointment_time = data.get('appointment_time')
     try:
-        apt_parse = datetime.strptime(appointment_time, '%Y-%m-%d').date()
+        apt_parse = datetime.strptime(appointment_time, '%Y-%m-%d %H:%M:%S')
         appointment = Appointment(patientId=patientId, doctorId=doctorId, appointmentTime=apt_parse)
         db.session.add(appointment)
         db.session.commit()
@@ -383,5 +383,18 @@ def view_appointment():
 @app.route('/api/MP/addMeasureData', methods=['POST'])
 def add_measurement():
     data = request.get_json()
-    patientId = data.get('patientId')
-    value = data.get('value') # design a form / table for patient to store health data
+    userId = data.get('userId')
+    deviceId = data.get('deviceId')
+    value = data.get('value')
+    measuretime = data.get('measuretime')
+    met =  datetime.strptime(measuretime, "%Y-%m-%d %H:%M:%S")
+    if None in [userId, deviceId, value, met]:
+        return jsonify({"error":"Missing info"}),400
+    try:
+        measurement = Measurements(userId=userId, deviceId=deviceId, value=value, measuretime=met)
+        db.session.add(measurement)
+        db.commit()
+        return jsonify({"message":"add measurement succeed!"}),200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}),500
