@@ -275,6 +275,8 @@ Admin User Stories:
 1. Browse Patients<br/>
    <img width="1224" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/61c9fce0-f015-4097-bc17-22c48b4c58ce">
 
+2. Browse appointments / Add Patient Measurement Data<br/>
+<img width="1397" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/3693d1e8-f35c-48fd-a7b4-9a3608ab0508">
 
 
 <br/>
@@ -292,7 +294,6 @@ Medical Professional (MP) User Stories
 - MP can search for keywords in messages and chats
 - MP have a calendar where they can show open time slots for appointments
 - MP can see all appointments booked at any time
-
 
 
 
