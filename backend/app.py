@@ -101,7 +101,10 @@ def validate_date(date_str):
         return True
     except ValueError:
         return False
-
+    
+@app.route('/api/users/hello', methods=['GET'])
+def helloapp():
+    return jsonify({"message":"hello world"}),200
 
 @app.route('/api/users/add', methods=['POST'])
 def add_user():

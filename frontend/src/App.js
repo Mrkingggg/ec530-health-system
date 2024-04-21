@@ -11,6 +11,7 @@ import "./App.css"
 import AddDevForm from './components/AddDevForm';
 import ManageDev from './components/ManageDev';
 import BrowsePatient from './components/BrowsePatient';
+import HelloApp from './components/HelloApp';
 
 const Home = () =>(
     <div>
@@ -20,6 +21,9 @@ const Home = () =>(
             <ul>
                 <li><Link to="/adduser">New User Create an Account.</Link></li>
                 {/* <li><Link to="/changeRoles">Change Roles of Users</Link></li> */}
+                <br/>
+                <br/>
+                <li><Link to="/helloapp">Hello App</Link></li>
             </ul>
         </nav>
     </div>
@@ -37,6 +41,7 @@ function App(){
                     <Route path="/addDev" element={<AddDevForm />} />
                     <Route path="/changeRoles" element={<ChgRForm />} />
                     <Route path="/managedev" element={<ManageDev />} />
+                    <Route path="/helloapp" element={<HelloApp />} />
                     <Route path="/browsepatients" element={<BrowsePatient />} />
                 </Routes>
             </div>
