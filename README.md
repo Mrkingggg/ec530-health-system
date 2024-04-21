@@ -296,7 +296,7 @@ Medical Professional (MP) User Stories
 
 
 
-### Hello App Framework
+## Hello App Framework
 
 1. helloapp() function in app.py. Definition of helloapp API, return a message of hello app.
 <br/>
