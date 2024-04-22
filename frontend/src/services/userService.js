@@ -137,14 +137,14 @@ export const browse_patient = async() => {
     }
 }
 
-export const add_patient_data = async(userId, deviceId, value, measuretime) => {
+export const add_patient_data = async(userId, deviceId, value, measuretime, measuretype) => {
     try{
         const response = await fetch('/api/MP/addMeasureData', {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({userId, deviceId, value, measuretime})
+            body: JSON.stringify({userId, deviceId, value, measuretime, measuretype})
         });
         const data = response.json()
 

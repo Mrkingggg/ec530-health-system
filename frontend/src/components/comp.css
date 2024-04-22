@@ -63,7 +63,7 @@
 }
 
 .personal-info {
-  margin-top: 10px;
+  margin-bottom: 30px;
   background-color: #FCFEF0;
 }
 
@@ -73,9 +73,10 @@
   align-items: center;
 }
 
-.appointments-section, .add-patient-data {
+.appointments-section{
   width: 100%;
-  background-color: #F0FDFE;
+  background-color: lightblue;
+  
 }
 
 .headers-container {
@@ -94,7 +95,11 @@
   width: 100%;
   max-width: 1200px; 
   margin: auto;
+  padding:20px;
+  padding-right: 90px;
+  padding-left: 90px;
   
+  background-image: url(../sky.jpeg);
   
 }
 
@@ -109,3 +114,7 @@
   padding-right: 20px; 
 }
 
+.right-section{
+  padding: 20px; 
+  background-image: linear-gradient(lightblue, beige);
+}

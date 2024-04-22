@@ -44,8 +44,9 @@ class Measurements(db.Model):
     MeasurementId = db.Column(db.Integer, primary_key=True)
     deviceId  = db.Column(db.Integer, db.ForeignKey('device.deviceId'))
     userId = db.Column(db.Integer, db.ForeignKey('users.userId'))
-    value = db.Column(db.Numeric(10, 2), nullable=True) 
-    measuretime = db.Column(db.DateTime, nullable=False, server_default=db.func.current_timestamp())
+    value = db.Column(db.String(150), nullable=True) 
+    measuretime = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    measuretype = db.Column(db.String(255), nullable=False)
 
 class Users(db.Model):
     __tablename__ = 'users'
@@ -390,13 +391,23 @@ def add_measurement():
     deviceId = data.get('deviceId')
     value = data.get('value')
     measuretime = data.get('measuretime')
-    met =  datetime.strptime(measuretime, "%Y-%m-%dT%H:%M")
-    if None in [userId, deviceId, value, met]:
-        return jsonify({"error":"Missing info"}),400
+    measuretype = data.get('measuretype')
+    
+    
+    if len(measuretime) == 16:  
+        measuretime += ':00'  
     try:
-        measurement = Measurements(userId=userId, deviceId=deviceId, value=value, measuretime=met)
+        met = datetime.fromisoformat(measuretime)
+    except ValueError as ve:
+        return jsonify({"error": "Incorrect date-time format. It should be ISO 8601 format with optional seconds (YYYY-MM-DDTHH:MM[:SS])."}), 400
+
+    if None in [userId, deviceId, value, met, measuretype]:
+        return jsonify({"error":"Missing info"}),400
+    
+    try:
+        measurement = Measurements(userId=userId, deviceId=deviceId, value=value, measuretime=met, measuretype=measuretype)
         db.session.add(measurement)
-        db.commit()
+        db.session.commit()
         return jsonify({"message":"add measurement succeed!"}),200
     except Exception as e:
         db.session.rollback()

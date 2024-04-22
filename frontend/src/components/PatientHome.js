@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"; // 导入 Link
+import { useNavigate } from "react-router-dom";
 import { logout } from "../services/userService"; 
 import React from "react";
 
@@ -7,21 +7,22 @@ function PatientHome() {
     const handleJump = async() =>{
         try {
             await logout();
-            navig('/'); // 登出成功后跳转到主页
+            navig('/'); 
         } catch (error) {
             console.error('Logout failed:', error);
-            // 处理错误情况（例如显示错误消息）
+           
         }
 
     }
 
     return (
         <div>
-            <label>
-            Hi, Patient.
-            </label>
+           <h1>Hi, Patient</h1>
             <br/>
             <br/>
+            <div>
+                <h2>Persoal Health Data</h2>
+            </div>
             <button onClick={handleJump}>Logout to Home Page</button>
         </div>
         

@@ -75,16 +75,18 @@ function MPHome() {
                             <span> Page {currentPage} of {totalPages} </span>
                             <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage >= totalPages}>Next</button>
                         </div><br/>
-                    </div>
+                    </div><br/>
+                    <button onClick={handleLogout}>Logout</button>
                 </div>
                 <div className="right-section">
                     <AddPatientData />
+                    <Link to="/browsepatients" className="button-jump">Browse All Patients</Link>&nbsp;&nbsp;&nbsp;
+                    <Link to="/browsedev" className="button-jump">Browse All Devices</Link><br/><br/>
+
                 </div>
             </div>
-            <Link to="/browsepatients" className="button-jump">Browse All Patients</Link>&nbsp;&nbsp;&nbsp;
-            <Link to="/browsedev" className="button-jump">Browse All Devices</Link><br/><br/>
-
-            <button onClick={handleLogout}>Logout</button>
+            
+            
         </div>
     );
 }
