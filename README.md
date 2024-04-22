@@ -279,6 +279,9 @@ Admin User Stories:
 <img width="1397" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/3693d1e8-f35c-48fd-a7b4-9a3608ab0508">
 
 
+<img width="1077" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/2c7801d6-a2c3-45f1-9cbb-ae40a1e9fc8c">
+
+
 <br/>
 Medical Professional (MP) User Stories
 
