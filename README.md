@@ -300,6 +300,17 @@ Medical Professional (MP) User Stories
 
 
 
+### Patient Functions:
+
+- Browse Latest Measurement Data list.
+- Make appointments with doctors.
+- Browse Basic Personal Info.
+
+
+<img width="1405" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/40aaa82b-f22c-406d-9293-29e4cf7174f0">
+
+
+
 ## Hello App Framework
 
 1. helloapp() function in app.py. Definition of helloapp API, return a message of hello app.
