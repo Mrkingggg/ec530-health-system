@@ -47,6 +47,8 @@ class Measurements(db.Model):
     value = db.Column(db.String(150), nullable=True) 
     measuretime = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     measuretype = db.Column(db.String(255), nullable=False)
+    device = db.relationship('Device', back_populates='measurements')
+
 
 class Users(db.Model):
     __tablename__ = 'users'
@@ -71,7 +73,7 @@ class Device(db.Model):
     manufactor = db.Column(db.String(255), nullable = False)
     devType = db.Column(db.String(50),nullable = False)
     unit = db.Column(db.String(50),nullable=False)
-    measurements = db.relationship('Measurements', backref='device', lazy=True)
+    measurements = db.relationship('Measurements', back_populates='device', lazy=True)
     status=db.Column(db.Integer, nullable=False) # default: banned 0
 
 class DeviceSchema(ma.SQLAlchemyAutoSchema):    # for nested json
@@ -412,3 +414,29 @@ def add_measurement():
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}),500
+    
+
+
+
+@app.route('/api/patient/view_measurements/<int:user_id>', methods=['GET'])
+def view_measurements(user_id):
+    result = db.session.query(Measurements.measuretype, db.func.max(Measurements.measuretime).label('latest_time')).\
+                filter(Measurements.userId == user_id).\
+                group_by(Measurements.measuretype).\
+                subquery()
+
+    latest_measurements = db.session.query(Measurements, Device.unit).\
+        join(Device).\
+        join(result, db.and_(Measurements.measuretype == result.c.measuretype, 
+                             Measurements.measuretime == result.c.latest_time,
+                             Measurements.userId == user_id)).\
+        all()
+
+    data = [{
+        'measuretype': measurement[0].measuretype,
+        'value': measurement[0].value,
+        'measuretime': measurement[0].measuretime.strftime("%Y-%m-%d %H:%M:%S"),
+        'unit': measurement[1]
+    } for measurement in latest_measurements]
+
+    return jsonify(data)

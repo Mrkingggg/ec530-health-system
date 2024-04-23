@@ -1,0 +1,37 @@
+/* PatientHome.css */
+.container {
+    display: flex;
+    justify-content: space-between; /* 确保组件之间有空间 */
+}
+
+.left-panel, .right-panel {
+    flex: 1;  /* 每个panel占据相等的空间 */
+    margin: 10px;
+    padding: 20px;
+}
+
+.data-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.data-item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #f9f9f9;
+}
+
+.data-item p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.data-item p span {
+    font-weight: bold;
+}
