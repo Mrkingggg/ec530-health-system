@@ -12,6 +12,15 @@ function MPHome() {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(5);
 
+    const fetchAppointments = () => {
+        if (user && user.role === 2) { // 假设角色 2 为医生
+            fetch(`/api/MP/view_appointment?doctorId=${user.userId}`)
+                .then(response => response.json())
+                .then(data => setAppointments(data))
+                .catch(error => console.error('Error:', error));
+        }
+    };
+
     useEffect(() => {
         if (user && user.role === 2) {
             fetch(`/api/MP/view_appointment?doctorId=${user.userId}`)
@@ -20,7 +29,10 @@ function MPHome() {
                 .catch(error => console.error('error:', error));
         }
     }, [user]);
-
+    const handleRefresh = async () => {
+        fetchAppointments();
+    }
+    
     const lastItemIndex = currentPage * itemsPerPage;
     const firstItemIndex = lastItemIndex - itemsPerPage;
     const currentItems = appointments.slice(firstItemIndex, lastItemIndex);
@@ -35,6 +47,7 @@ function MPHome() {
         }
     };
 
+    
     function formatDateTime(dateTimeString) {
         return dateTimeString.replace('T', ' ');
     }
@@ -76,7 +89,9 @@ function MPHome() {
                             <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage >= totalPages}>Next</button>
                         </div><br/>
                     </div><br/>
+                    <button onClick={handleRefresh}>Refresh</button>&nbsp;&nbsp;&nbsp;
                     <button onClick={handleLogout}>Logout</button>
+
                 </div>
                 <div className="right-section">
                     <AddPatientData />
