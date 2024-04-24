@@ -10,6 +10,7 @@ import threading
 import uuid
 from flask_cors import CORS
 from datetime import datetime, timezone
+from flask_socketio import SocketIO, emit
 
 # pip install -r requirements.txt -- apply the requirements.txt in various environments.
 
@@ -31,8 +32,10 @@ ma  = Marshmallow(app)
 report_queue = Queue() # report queue
 reports_status = {} 
 notification_queue = Queue()
-# medium tables:
+socketio = SocketIO(app)
 
+
+# medium tables:
 rolesmap = db.Table('rolesmap', 
                     db.Column('userId',db.Integer, db.ForeignKey('users.userId'), primary_key=True),
                     db.Column('roleId',db.Integer, db.ForeignKey('role.roleId'), primary_key=True)
@@ -64,9 +67,9 @@ class ChatPairs(db.Model):
     pairid = db.Column(db.Integer, primary_key = True)
     MPid = db.Column(db.Integer, db.ForeignKey('users.userId'))
     patientid = db.Column(db.Integer, db.ForeignKey('users.userId'))
-    mp = db.relationship('Users', foreign_keys=[MPid])
-    patient = db.relationship('Users', foreign_keys=[patientid])
-   
+    mp = db.relationship('Users', foreign_keys=[MPid], backref=db.backref('initiated_chats', lazy='dynamic'))
+    patient = db.relationship('Users', foreign_keys=[patientid], backref=db.backref('received_chats', lazy='dynamic'))
+
 
 # database models: 
 class Measurements(db.Model):
@@ -91,9 +94,7 @@ class Users(db.Model):
     gender = db.Column(db.Enum('female','male','other'), unique=True, nullable=False)
     roles = db.relationship('Role', secondary=rolesmap, backref=db.backref('users', lazy='dynamic'))
     measurements = db.relationship('Measurements', backref='user', lazy=True)
-    initiated_chats = db.relationship('ChatPairs', foreign_keys='ChatPairs.MPid', backref='mp', lazy='dynamic')
-    received_chats = db.relationship('ChatPairs', foreign_keys='ChatPairs.patientid', backref='patient', lazy='dynamic')
-
+    
 
 class Role(db.Model):
     __tablename__ = 'role'
@@ -392,7 +393,7 @@ def make_appointment():
     patientId = data.get('patientId')
     appointment_time = data.get('appointment_time')
     try:
-        apt_parse = datetime.strptime(appointment_time, '%Y-%m-%d %H:%M:%S')
+        apt_parse = datetime.fromisoformat(appointment_time)
         appointment = Appointment(patientId=patientId, doctorId=doctorId, appointmentTime=apt_parse)
         db.session.add(appointment)
         db.session.commit()
@@ -491,7 +492,7 @@ def add_chat_patient():
     except Exception as e:
         return jsonify({"error":str(e)}),500
 
-@app.route('api/MP/remove_chat_patient', methods=['DELETE'])
+@app.route('/api/MP/remove_chat_patient', methods=['DELETE'])
 def remove_chat_patient():
     MPid = request.args.get('MPid')
     patientid = request.args.get('patientid')
@@ -518,3 +519,26 @@ def view_history():
     results = ChatHistory.query.filter_by(MPid = MPid, patientid=patientid).all()
     formatted_data = [record.format_msg() for record in results]
     return jsonify(formatted_data)
+
+@app.route('/api/gen/send_store_message', methods=['POST'])
+def send_store_message():
+    data = request.get_json()
+    MPid = data.get('MPid')
+    patientid = data.get('patientid')
+    direction = data.get('direction')
+    message = data.get('message')
+    sendtime = data.get('sendtime')
+    status = 'unsent'     # implement websocket for sending messages. Change status if msg sent
+
+
+
+    if None in [MPid, patientid, direction, message, sendtime]:
+        return jsonify({"error":"missing info."}),400
+    try:
+        chatHistory = ChatHistory(MPid = MPid, patientid=patientid, direction=direction, message=message, sendtime=sendtime, status=status)
+        db.session.add(chatHistory)
+        db.session.commit()
+        return jsonify({"message":"store a chat-history"}), 200
+    
+    except Exception as e:
+        return jsonify({"error":str(e)}),500
