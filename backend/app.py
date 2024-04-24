@@ -10,7 +10,7 @@ import threading
 import uuid
 from flask_cors import CORS
 from datetime import datetime, timezone
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit, join_room
 
 # pip install -r requirements.txt -- apply the requirements.txt in various environments.
 
@@ -476,6 +476,7 @@ def view_measurements(user_id):
     return jsonify(data)
 
 
+# chatting system:
 
 @app.route('/api/MP/add_chat_patient', methods = ['POST'])
 def add_chat_patient():
@@ -520,6 +521,12 @@ def view_history():
     formatted_data = [record.format_msg() for record in results]
     return jsonify(formatted_data)
 
+@socketio.on('connect')
+def on_connect():
+    user_id = request.args.get('user_id')
+    join_room(user_id)
+    emit('response', {'message': 'You have been connected.'})
+
 @app.route('/api/gen/send_store_message', methods=['POST'])
 def send_store_message():
     data = request.get_json()
@@ -528,9 +535,7 @@ def send_store_message():
     direction = data.get('direction')
     message = data.get('message')
     sendtime = data.get('sendtime')
-    status = 'unsent'     # implement websocket for sending messages. Change status if msg sent
-
-
+    status = 'sent'     # implement websocket for sending messages. Change status if msg sent
 
     if None in [MPid, patientid, direction, message, sendtime]:
         return jsonify({"error":"missing info."}),400
@@ -538,7 +543,12 @@ def send_store_message():
         chatHistory = ChatHistory(MPid = MPid, patientid=patientid, direction=direction, message=message, sendtime=sendtime, status=status)
         db.session.add(chatHistory)
         db.session.commit()
-        return jsonify({"message":"store a chat-history"}), 200
+        # return jsonify({"message":"store a chat-history"}), 200
     
     except Exception as e:
         return jsonify({"error":str(e)}),500
+
+    recipient_id = patientid if direction == 'send' else MPid
+    socketio.emit('message_response', {'message': message, 'from': MPid, 'to': patientid, 'direction': direction}, room=str(recipient_id))
+
+    return jsonify({"message": "Message sent and store initiated"}), 200

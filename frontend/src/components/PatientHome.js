@@ -36,7 +36,20 @@ function PatientHome() {
         };
         fetchMeasurements();
     }, [user]); 
-
+    const fetchMeasurements = async () => {
+        if (user) {
+            try {
+                const response = await fetch(`/api/patient/view_measurements/${user.userId}`);
+                const data = await response.json();
+                setMeasurements(data);
+            } catch (error) {
+                console.error('Failed to fetch measurements:', error);
+            }
+        }
+    };
+    const handleRefresh = async () =>{
+        fetchMeasurements();
+    }
     const handleAppointment = async (event) => {
         event.preventDefault();
         const appointmentData = {
@@ -70,7 +83,7 @@ function PatientHome() {
             <div className="container">
                 <div className="left-panel">
                     <div className="data-container">
-                        <h2>Personal Health Data</h2>
+                        <h2>Personal Basic Info.</h2>
                         <div className="data-item">
                             <p>Patient Name: {user && user.fullname}</p>
                             <p>Gender: {user && user.gender}</p>
@@ -110,7 +123,7 @@ function PatientHome() {
                                 </div>
                             ))}
                     </div><br/>
-                    
+                    <button onClick={handleRefresh}>Refresh</button>
                 </div>
                 
             </div>
