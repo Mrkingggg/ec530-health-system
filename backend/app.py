@@ -9,7 +9,7 @@ from queue import Queue
 import threading
 import uuid
 from flask_cors import CORS
-from datetime import datetime
+from datetime import datetime, timezone
 
 # pip install -r requirements.txt -- apply the requirements.txt in various environments.
 
@@ -38,6 +38,36 @@ rolesmap = db.Table('rolesmap',
                     db.Column('roleId',db.Integer, db.ForeignKey('role.roleId'), primary_key=True)
                     )
 
+class ChatHistory(db.Model):
+    __tablename__='ChatHistory'
+    msgid = db.Column(db.Integer, primary_key = True)
+    MPid = db.Column(db.Integer, db.ForeignKey('users.userId'), nullable = False)
+    patientid = db.Column(db.Integer, db.ForeignKey('users.userId'), nullable = False)
+    message = db.Column(db.String(255), nullable = False)
+    sendtime = db.Column(db.DateTime, nullable = False, default = datetime.now(timezone.utc))
+    status = db.Column(db.Enum('sent','unsent'), nullable = False)
+    direction = db.Column(db.Enum('recv','send'), default = 'send')
+    
+    def format_msg(self):
+        mp = Users.query.get(self.MPid)
+        patient = Users.query.get(self.patientid)
+        if(self.status == 'send'):
+            return {f"{mp.fullname} to {patient.fullname}":self.message}
+        elif(self.status == 'recv'):
+            return {f"{patient.fullname} to {mp.fullname}":self.message}
+        else:
+            return {"error":"Error Chat"}
+
+
+class ChatPairs(db.Model):
+    __tablename__ = 'ChatPairs'
+    pairid = db.Column(db.Integer, primary_key = True)
+    MPid = db.Column(db.Integer, db.ForeignKey('users.userId'))
+    patientid = db.Column(db.Integer, db.ForeignKey('users.userId'))
+    mp = db.relationship('Users', foreign_keys=[MPid])
+    patient = db.relationship('Users', foreign_keys=[patientid])
+   
+
 # database models: 
 class Measurements(db.Model):
     __tablename__ = 'measurements'
@@ -61,6 +91,9 @@ class Users(db.Model):
     gender = db.Column(db.Enum('female','male','other'), unique=True, nullable=False)
     roles = db.relationship('Role', secondary=rolesmap, backref=db.backref('users', lazy='dynamic'))
     measurements = db.relationship('Measurements', backref='user', lazy=True)
+    initiated_chats = db.relationship('ChatPairs', foreign_keys='ChatPairs.MPid', backref='mp', lazy='dynamic')
+    received_chats = db.relationship('ChatPairs', foreign_keys='ChatPairs.patientid', backref='patient', lazy='dynamic')
+
 
 class Role(db.Model):
     __tablename__ = 'role'
@@ -440,3 +473,48 @@ def view_measurements(user_id):
     } for measurement in latest_measurements]
 
     return jsonify(data)
+
+
+
+@app.route('/api/MP/add_chat_patient', methods = ['POST'])
+def add_chat_patient():
+    data = request.get_json()
+    MPid = data.get('MPid')
+    patientid = data.get('patientid')
+    if None in [MPid, patientid]:
+        return jsonify({"error":"missing info."}),400
+    try:
+        chatPair = ChatPairs(MPid = MPid, patientid = patientid)
+        db.session.add(chatPair)
+        db.session.commit()
+        return jsonify({"message":"succeed in adding chat patient."}),200
+    except Exception as e:
+        return jsonify({"error":str(e)}),500
+
+@app.route('api/MP/remove_chat_patient', methods=['DELETE'])
+def remove_chat_patient():
+    MPid = request.args.get('MPid')
+    patientid = request.args.get('patientid')
+
+    if not MPid or not patientid:
+        return jsonify({"error":"missing args"}),400
+    
+    chat_pair = ChatPairs.query.filter_by(MPid = MPid, patientid=patientid).first()
+    if chat_pair is not None:
+        db.session.delete(chat_pair)
+        db.session.commit()
+        return jsonify({"message":"delete this chat pair"}), 200
+    else:
+        return jsonify({"error":"No such chat pair"}),404
+    
+
+@app.route('/api/gen/view_chat_history', methods = ['GET'])
+def view_history():
+    MPid = request.args.get('MPid')
+    patientid = request.args.get('patientid')
+    if not MPid or not patientid:
+        return jsonify({"error":"No such user(s)."}),400
+    
+    results = ChatHistory.query.filter_by(MPid = MPid, patientid=patientid).all()
+    formatted_data = [record.format_msg() for record in results]
+    return jsonify(formatted_data)

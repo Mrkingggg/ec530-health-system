@@ -34,7 +34,7 @@ Create table measurements(
 	MeasurementId int auto_increment primary key,
     deviceId int,
     userId int,
-    val DECIMAL(10,2),
+    `value` varchar(150),
     measuretime DATETIME default CURRENT_TIMESTAMP,
     foreign key(deviceId) references device(deviceId),
     foreign key(userId) references users(userId)
@@ -51,4 +51,26 @@ create table appointments(
     foreign key(doctorId) references users(userId)
     
 
+);
+-- store chat pairs
+create table ChatPairs(
+	pairid int auto_increment primary key,
+    MPid int not null,
+    patientid int not null,
+    foreign key(MPid) references users(userId),
+    foreign key(patientid) references users(userId)
+	
+);
+
+create table ChatHistory(
+	msgid int auto_increment primary key,
+    MPid int not null,
+    patientid int not null,
+    message varchar(255) not null,
+    sendtime datetime default current_timestamp,
+    status enum('sent','unsent'),
+    `direction` enum('recv','send') NOT NULL DEFAULT 'send',
+    foreign key(MPid) references users(userId),
+    foreign key(patientid) references users(userId)
+    
 );
