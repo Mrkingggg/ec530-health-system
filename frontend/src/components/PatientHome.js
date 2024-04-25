@@ -72,13 +72,17 @@ function PatientHome() {
             alert('Failed! Try again');
         }
     };
+    const handleChatList = async () =>{
+        navig("/browsechats");
+    }
 
 
 
     return (
         <div>
             <div>
-                <h1>Hi , Patient !</h1>
+                <h1 className="header1">Hi , Patient !</h1>
+                <button onClick={handleChatList}>View Chat List</button>
             </div>
             <div className="container">
                 <div className="left-panel">

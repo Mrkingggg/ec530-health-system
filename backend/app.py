@@ -508,7 +508,30 @@ def remove_chat_patient():
         return jsonify({"message":"delete this chat pair"}), 200
     else:
         return jsonify({"error":"No such chat pair"}),404
-    
+
+
+@app.route('/api/gen/view_chat_pairs/<int:user_id>', methods=['GET'])
+def view_chat_pairs(user_id):
+    try:
+        # 查询用户作为医疗人员或病人的所有聊天对
+        chat_pairs = ChatPairs.query.filter((ChatPairs.MPid == user_id) | (ChatPairs.patientid == user_id)).all()
+
+        # 生成响应数据，列出所有相关的聊天对
+        results = []
+        for pair in chat_pairs:
+            pair_info = {
+                "MPid": pair.MPid,
+                "patient_id": pair.patientid,
+                "MP_username": pair.mp.username,
+                "patient_username": pair.patient.username
+            }
+            results.append(pair_info)
+
+        return jsonify(results), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500  
+
 
 @app.route('/api/gen/view_chat_history', methods = ['GET'])
 def view_history():

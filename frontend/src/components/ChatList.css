@@ -1,0 +1,22 @@
+/* 在你的应用的全局样式文件中添加这些样式 */
+.chat-pair-item {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer; /* 显示可以点击的鼠标指针 */
+    transition: background-color 0.3s; /* 平滑过渡背景颜色 */
+    background-color: lightblue;
+    width: 50%;
+    
+}
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 垂直居中 */
+    list-style-type: none; /* 移除默认的列表标记 */
+    padding: 0; /* 移除默认的内边距 */
+}
+
+.chat-pair-item:hover {
+    color:blue; /* 悬停时的背景颜色 */
+}
