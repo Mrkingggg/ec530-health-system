@@ -1,4 +1,4 @@
-# ec530 health system project
+# ec530 health system project -- Flask + React
 
 ## Schema of API:
 
