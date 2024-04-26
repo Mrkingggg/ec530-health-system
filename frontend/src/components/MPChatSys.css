@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.chat-list, .add-chat-pair {
+    flex: 1; /* 使两个组件等宽，或根据需要调整flex比例 */
+}

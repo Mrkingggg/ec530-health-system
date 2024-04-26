@@ -33,7 +33,7 @@ function MPHome() {
         fetchAppointments();
     }
     const handleJumpChats = async () => {
-        navigate('/browsechats');
+        navigate('/mpchatsys');
     }
     const lastItemIndex = currentPage * itemsPerPage;
     const firstItemIndex = lastItemIndex - itemsPerPage;

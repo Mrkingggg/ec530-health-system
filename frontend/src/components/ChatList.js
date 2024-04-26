@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import  { useAuth } from '../components/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
 import "./ChatList.css"
 const ChatList = () => {
     const [chatPairs, setChatPairs] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const { user } = useAuth();
+    const navigate = useNavigate();
 
     const handleChatPairClick = (pair) => {
-        
         console.log('Clicked pair:', pair);
-        
+        // 导航到新页面
+        navigate(`/chat-history/${pair.MPid}/${pair.patient_id}`);
     };
 
     useEffect(() => {
@@ -29,7 +32,9 @@ const ChatList = () => {
             setIsLoading(false);
         };
 
-        fetchChatPairs();
+        if (user?.userId) {
+            fetchChatPairs();
+        }
     }, [user]);
 
     if (isLoading) {
