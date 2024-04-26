@@ -205,12 +205,33 @@
    - userId: int (userId from table users)
    - value: float
    - measuretime: datetime
+
+
 6. table appointments:
    - appointmentId: int (PM)
    - patientId
    - doctorId
    - appointmentTime
    - status
+
+
+7. Table ChatPairs:
+   - pairid int PK
+   - MPid int
+   - patientid int
+
+
+
+8. Table ChatHisroty:
+   - msgid int PK
+   - MPid int
+   - patientid int
+   - message varchar(255)
+   - sendtime datetime
+   - status enum('sent','unsent')
+   - direction enum('recv','send')
+
+
 
 ## app.py （ /backend/app.py ）
 
