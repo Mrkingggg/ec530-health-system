@@ -109,21 +109,36 @@
        <br/>
        <img width="1312" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/9524955e-6a4e-4730-84d8-7fb6b79d02e0">
 
+
 10. Browse all patients
     - GET: /api/MP/browsePatient <br/>
       API test:
       <img width="792" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/b2c28db0-5318-4f89-be55-78bad4766efe">
 
+
 11. Make Appointments:
    - POST: /api/patient/makeAppointment
+
+
 12. View Appointments:
    - GET: /api/MP/view_appointment
+   <img width="1043" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/7e4c98bb-30aa-4efd-822e-97c1ca2a48ef">
+
+
 13. Add Measurement data:
    - POST: /api/MP/addMeasureData
 14. View Latest Measurement Report ( All Measurements up to date)
    - GET: /api/patient/view_measurements/<int:user_id>
+
+
+   <img width="1048" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/eb45f653-6b5f-49c9-a12d-fcb9182885e1">
+
+
+
 15. Add New Chat with patients
    - POST: /api/MP/add_chat_patient
+
+
    <img width="1045" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/fd0596d8-5d2d-4cf0-ba89-e11d11832147">
 
 
