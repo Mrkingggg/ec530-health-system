@@ -110,9 +110,31 @@
        <img width="1312" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/9524955e-6a4e-4730-84d8-7fb6b79d02e0">
 
 10. Browse all patients
-    - GET: api/MP/browsePatient <br/>
+    - GET: /api/MP/browsePatient <br/>
       API test:
       <img width="792" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/b2c28db0-5318-4f89-be55-78bad4766efe">
+
+11. Make Appointments:
+   - POST: /api/patient/makeAppointment
+12. View Appointments:
+   - GET: /api/MP/view_appointment
+13. Add Measurement data:
+   - POST: /api/MP/addMeasureData
+14. View Latest Measurement Report ( All Measurements up to date)
+   - GET: /api/patient/view_measurements/<int:user_id>
+15. Add New Chat with patients
+   - POST: /api/MP/add_chat_patient
+16. Remove A Chat with patient
+   - DELETE: /api/MP/remove_chat_patient
+17. View Chat List
+   - GET: /api/gen/view_chat_pairs/<int:user_id>
+18. View Chat History
+   - GET: /api/gen/view_chat_history
+19. Send and Store Messages to Database
+   - POST: /api/gen/send_store_message
+
+
+
 
 ## Database Schema -- relational sql ( in dbschema.sql )
 
@@ -309,7 +331,7 @@ Admin User Stories:
 - Browse Basic Personal Info.
 - Chat with different doctors and browse chat history.
 
-<img width="1405" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/40aaa82b-f22c-406d-9293-29e4cf7174f0">
+<img width="1392" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/8f58caf1-132d-4de2-923e-2fddbc2f8174">
 
 
 
