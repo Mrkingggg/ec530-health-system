@@ -17,9 +17,9 @@ function AddPatientData() {
     const handleMeasuretypeChange = (e) =>setMeasuretype(e.target.value);
     // 处理表单提交的函数
     const handleSubmit = async (e) => {
-        e.preventDefault(); // 阻止表单的默认提交行为
+        e.preventDefault(); 
         try {
-            // 调用add_patient_data函数提交数据
+            
             const data = await add_patient_data(userId, deviceId, value, measuretime, measuretype);
             console.log('Data submitted successfully:', data);
             alert('Data submitted successfully!');

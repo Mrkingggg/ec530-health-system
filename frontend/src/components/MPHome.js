@@ -32,7 +32,9 @@ function MPHome() {
     const handleRefresh = async () => {
         fetchAppointments();
     }
-    
+    const handleJumpChats = async () => {
+        navigate('/browsechats');
+    }
     const lastItemIndex = currentPage * itemsPerPage;
     const firstItemIndex = lastItemIndex - itemsPerPage;
     const currentItems = appointments.slice(firstItemIndex, lastItemIndex);
@@ -54,7 +56,11 @@ function MPHome() {
 
     return (
         <div className="layout">
-            <h1>Doctor/Nurse HomePage</h1><br/>
+            <div className="mpheader">
+                <h1 className="mptitle">Doctor/Nurse HomePage</h1><br/>
+                <button onClick={handleJumpChats}>Browse ChatList</button>
+            </div>
+            
             <div className="main-container">
                 <div className="left-section">
                     <div className="personal-info">

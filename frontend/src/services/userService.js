@@ -157,3 +157,22 @@ export const add_patient_data = async(userId, deviceId, value, measuretime, meas
         throw error;
     }
 }
+
+export const add_chat = async(MPid, patientid) => {
+    try{
+        const response  = await fetch('/api/MP/add_chat_patient', {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({MPid, patientid})
+        });
+        const data = response.json()
+        if(!response.ok){
+            throw new Error(data.error || data.bad_request || 'Add Chat failed');
+        }
+        return data;
+    }catch(error){
+        throw error;
+    }
+}

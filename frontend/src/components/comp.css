@@ -118,3 +118,25 @@
   padding: 20px; 
   background-image: linear-gradient(lightblue, beige);
 }
+
+
+.mpheader {
+  display: flex;                  /* Use flexbox for the container */
+  justify-content: center;        /* Center the content horizontally */
+  align-items: center;            /* Align items vertically */
+  text-align: center;             /* Center text for when items wrap */
+  padding: 20px;                  /* Padding around the header */
+}
+.mptitle {
+  flex: 1;                        /* Allows the title to take up extra space */
+}
+.mpbutton {
+  /* Styles for the button */
+  padding: 10px 20px;             /* Padding inside the button */
+  background-color: #007BFF;      /* Background color */
+  color: white;                   /* Text color */
+  text-decoration: none;          /* No underline for the link */
+  border-radius: 5px;             /* Rounded corners */
+  border: none;                   /* No border */
+  cursor: pointer;                /* Pointer cursor on hover */
+}
