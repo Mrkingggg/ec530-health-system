@@ -124,15 +124,30 @@
    - GET: /api/patient/view_measurements/<int:user_id>
 15. Add New Chat with patients
    - POST: /api/MP/add_chat_patient
+   <img width="1045" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/fd0596d8-5d2d-4cf0-ba89-e11d11832147">
+
+
+
 16. Remove A Chat with patient
    - DELETE: /api/MP/remove_chat_patient
+   <img width="1050" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/786f22bf-3e0f-40ba-96f4-9d0b6ee3c862">
+
+
 17. View Chat List
    - GET: /api/gen/view_chat_pairs/<int:user_id>
+   <img width="1054" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/a1dc878c-4470-456f-9125-2cc71330fce4">
+
+
 18. View Chat History
    - GET: /api/gen/view_chat_history
+   <img width="1053" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/daec2d45-64ec-40d1-ab26-6dd7eed56fe7">
+
+
+
 19. Send and Store Messages to Database
    - POST: /api/gen/send_store_message
 
+   <img width="579" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/61e54a4a-43c8-4547-ae2f-e3e8ae786524">
 
 
 
