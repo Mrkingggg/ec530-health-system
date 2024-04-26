@@ -16,6 +16,8 @@ import DevicesTable from './components/DeviceTable';
 import ChatList from './components/ChatList';
 import MPChatSys from './components/MPChatSys';
 import ChatHistory from './components/ChatHistory';
+import Chathispatient from './components/Chathispatient';
+import Chatlistpatient from './components/Chatlistpatient';
 const Home = () =>(
     <div>
         <h1>Health App -- Home Page</h1>
@@ -48,8 +50,10 @@ function App(){
                     <Route path="/browsepatients" element={<BrowsePatient />} />
                     <Route path="/browsedev" element={<DevicesTable />} />
                     <Route path="/browsechats" element={<ChatList />} />
+                    <Route path="/browsepatientchats" element={<Chatlistpatient />} />
                     <Route path="/mpchatsys" element={<MPChatSys />} />
                     <Route path="/chat-history/:mpId/:patientId" element={<ChatHistory />} />
+                    <Route path="/chat-patient-history/:mpId/:patientId" element={<Chathispatient />} />
 
 
                 </Routes>

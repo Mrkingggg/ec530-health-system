@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import "./ChatHistory.css"
-function ChatHistory() {
+import "./ChatHistory.css";
+function Chathispatient() {
     const { mpId, patientId } = useParams();
-    const [chatHistory, setChatHistory] = useState([]);
+    const [chathispatient, setChathispatient] = useState([]);
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -17,7 +17,7 @@ function ChatHistory() {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                setChatHistory(data);
+                setChathispatient(data);
             } catch (error) {
                 setError(error.message);
             }
@@ -32,7 +32,7 @@ function ChatHistory() {
         const payload = {
             MPid: mpId,
             patientid: patientId,
-            direction: 'send',  
+            direction: 'recv',  
             message: message,
             sendtime: new Date().toISOString(),
             status: 'sent'
@@ -48,7 +48,7 @@ function ChatHistory() {
             });
             const data = await response.json();
             if (response.ok) {
-                setChatHistory([...chatHistory, { ...payload, content: message }]);  // Assuming the API returns the new message formatted similarly
+                setChathispatient([...chathispatient, { ...payload, content: message }]);  // Assuming the API returns the new message formatted similarly
                 setMessage('');
             } else {
                 throw new Error(data.error || 'Failed to send message');
@@ -64,9 +64,9 @@ function ChatHistory() {
     return (
         <div className='container'>
             <div className='chat-history'>
-                <h2>Chat History with patient id: {patientId}</h2>
+                <h2>Chat History with MP id: {mpId}</h2>
                 <ul>
-                    {chatHistory.map((msg, index) => (
+                    {chathispatient.map((msg, index) => (
                         <li key={index}>
                             <p>{msg.username} {msg.sendtime} : {msg.message}</p>
                         </li>
@@ -86,4 +86,4 @@ function ChatHistory() {
     );
 }
 
-export default ChatHistory;
+export default Chathispatient;

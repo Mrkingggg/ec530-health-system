@@ -11,7 +11,7 @@ import uuid
 from flask_cors import CORS
 from datetime import datetime, timezone
 from flask_socketio import SocketIO, emit, join_room
-
+from sqlalchemy.orm import aliased
 # pip install -r requirements.txt -- apply the requirements.txt in various environments.
 
 app = Flask(__name__)
@@ -50,7 +50,9 @@ class ChatHistory(db.Model):
     sendtime = db.Column(db.DateTime, nullable = False, default = datetime.now(timezone.utc))
     status = db.Column(db.Enum('sent','unsent'), nullable = False)
     direction = db.Column(db.Enum('recv','send'), default = 'send')
-    
+    hismp = db.relationship('Users', foreign_keys=[MPid], backref=db.backref('his_mp', lazy='dynamic'))
+    hispatient = db.relationship('Users', foreign_keys=[patientid], backref=db.backref('his_patient', lazy='dynamic'))
+
     def format_msg(self):
         mp = Users.query.get(self.MPid)
         patient = Users.query.get(self.patientid)
@@ -533,16 +535,35 @@ def view_chat_pairs(user_id):
         return jsonify({"error": str(e)}), 500  
 
 
-@app.route('/api/gen/view_chat_history', methods = ['GET'])
+@app.route('/api/gen/view_chat_history', methods=['GET'])
 def view_history():
     MPid = request.args.get('MPid')
     patientid = request.args.get('patientid')
+
     if not MPid or not patientid:
-        return jsonify({"error":"No such user(s)."}),400
-    
-    results = ChatHistory.query.filter_by(MPid = MPid, patientid=patientid).all()
-    formatted_data = [record.format_msg() for record in results]
-    return jsonify(formatted_data)
+        return jsonify({"error": "Missing MPid or patientid"}), 400
+
+    try:
+        # 创建别名
+        UserMP = aliased(Users)
+        UserPatient = aliased(Users)
+
+        results = ChatHistory.query\
+            .join(UserMP, UserMP.userId == ChatHistory.MPid)\
+            .join(UserPatient, UserPatient.userId == ChatHistory.patientid)\
+            .filter(ChatHistory.MPid == MPid, ChatHistory.patientid == patientid)\
+            .all()
+
+        formatted_data = [{
+            'message': record.message,
+            'sendtime': record.sendtime.strftime("%Y-%m-%d %H:%M:%S"),
+            'username': record.hismp.username if record.direction == 'send' else record.hispatient.username
+        } for record in results]
+
+        return jsonify(formatted_data)
+    except Exception as e:
+        app.logger.error(f"Error during fetching chat history: {e}")
+        return jsonify({"error": str(e)}), 500
 
 @socketio.on('connect')
 def on_connect():
@@ -559,11 +580,11 @@ def send_store_message():
     message = data.get('message')
     sendtime = data.get('sendtime')
     status = 'sent'     # implement websocket for sending messages. Change status if msg sent
-
     if None in [MPid, patientid, direction, message, sendtime]:
         return jsonify({"error":"missing info."}),400
     try:
-        chatHistory = ChatHistory(MPid = MPid, patientid=patientid, direction=direction, message=message, sendtime=sendtime, status=status)
+        formatted_sendtime = datetime.strptime(sendtime, "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S")
+        chatHistory = ChatHistory(MPid = MPid, patientid=patientid, direction=direction, message=message, sendtime=formatted_sendtime, status=status)
         db.session.add(chatHistory)
         db.session.commit()
         # return jsonify({"message":"store a chat-history"}), 200

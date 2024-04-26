@@ -73,7 +73,7 @@ function PatientHome() {
         }
     };
     const handleChatList = async () =>{
-        navig("/browsechats");
+        navig("/browsepatientchats");
     }
 
 
