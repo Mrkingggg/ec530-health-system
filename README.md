@@ -273,41 +273,51 @@ Admin User Stories:
 ### MP(Doctor/Nurse) Functions:
 
 1. Browse Patients<br/>
+
+
    <img width="1224" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/61c9fce0-f015-4097-bc17-22c48b4c58ce">
 
-2. Browse appointments / Add Patient Measurement Data<br/>
-<img width="1397" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/3693d1e8-f35c-48fd-a7b4-9a3608ab0508">
 
 
-<img width="1077" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/2c7801d6-a2c3-45f1-9cbb-ae40a1e9fc8c">
+2. Browse appointments / Add Latest Patient Measurement Data<br/>
+
+
+   <img width="1071" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/df97cd51-e6c0-4b42-b9cd-74f001ad4b62">
+
+
+3. Browse All Chats with different patients. / Add new chats with patients.
+
+
+   <img width="1296" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/d250ca06-4687-4c24-b163-a59c6dc0bcdd">
+
+
+
+4. View chatting history in detail by clicking different chats.
+
+
+   <img width="1338" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/c9dceb4e-fd3f-42cd-8c2e-388e305f7218">
+
 
 
 <br/>
-Medical Professional (MP) User Stories
-
-
-- Browse Patients
-- Assign a medical device to a Patient
-- Assign Alert and scheduling for medical measurement, e.g.,
-- Patient to measure blood pressure daily.  MP will receive an alert if it not done.
-- Temperature is higher or lower than a value.  MP will get an alert if the measurement is outside acceptable range
-- MP can input data for any patient
-- MP can chat with patients using text, voice or videos.
-- MP can read transcripts of Patient uploaded videos and messages
-- MP can search for keywords in messages and chats
-- MP have a calendar where they can show open time slots for appointments
-- MP can see all appointments booked at any time
-
 
 
 ### Patient Functions:
 
-- Browse Latest Measurement Data list.
+- Browse Latest Measurement Data list.(Refresh function is implemented.)
 - Make appointments with doctors.
 - Browse Basic Personal Info.
-
+- Chat with different doctors and browse chat history.
 
 <img width="1405" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/40aaa82b-f22c-406d-9293-29e4cf7174f0">
+
+
+
+<img width="1032" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/09afebdd-e0a2-4228-aae8-47dcff2ce96d">
+
+
+
+<img width="1363" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/53b2467e-e5ba-4c0b-8b91-97395b1d0de2">
 
 
 
