@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 from flask_socketio import SocketIO, emit, join_room
 from sqlalchemy.orm import aliased
 # pip install -r requirements.txt -- apply the requirements.txt in various environments.
+import os
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
@@ -20,8 +21,18 @@ CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
 
 #connect to my database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root1234@localhost:3306/HealthApp'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root1234@localhost:3306/HealthApp'
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# if test: momery database.
+if os.getenv('FLASK_ENV') == 'development':
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root1234@localhost:3306/HealthApp'
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['TESTING'] = True
+
 app.config['JWT_SECRET_KEY'] = '2fdbf97d3094c3c8896e173f16c55fcb'
 app.secret_key = '2fdbf97d3094c3c8896e173f16c55fcb'
 
