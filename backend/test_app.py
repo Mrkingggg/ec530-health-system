@@ -172,7 +172,7 @@ def test_login(test_client):
 def test_browse_patients(test_client):
     response = test_client.get('/api/MP/browsePatient')
     assert response.status_code == 200
-    assert isinstance(response.json, list)  # 应返回一个列表
+    assert isinstance(response.json, list)  
 
 def test_make_appointment(test_client):
     
