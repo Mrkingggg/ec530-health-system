@@ -214,9 +214,9 @@ def create_app(config_name=None):
             db.session.add(user)
             db.session.flush() # assign id ?
             for role_id in role_ids:
-            role = Role.query.get(role_id)
-            if role:
-                user.roles.append(role)
+                role = Role.query.get(role_id)
+                if role:
+                    user.roles.append(role)
 
             db.session.commit()
             return jsonify({"message": "User added successfully", "userId": user.userId}), 201
