@@ -15,6 +15,32 @@ from sqlalchemy.orm import aliased
 # pip install -r requirements.txt -- apply the requirements.txt in various environments.
 import os
 
+
+
+def create_app(config_name=None):
+    app = Flask(__name__)
+
+    # 根据不同环境配置数据库
+    if config_name == 'development':
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root1234@localhost:3306/HealthApp'
+    else:
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['TESTING'] = True if config_name == 'testing' else False
+    app.config['JWT_SECRET_KEY'] = '2fdbf97d3094c3c8896e173f16c55fcb'
+    app.secret_key = '2fdbf97d3094c3c8896e173f16c55fcb'
+
+    CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+
+    db.init_app(app)
+    Migrate(app, db)
+    JWTManager(app)
+    Marshmallow(app)
+    SocketIO(app)
+
+    return app
+
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
