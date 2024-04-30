@@ -1,3 +1,38 @@
+import pytest
+from app import app, db, Role, Users
+
+@pytest.fixture
+def client():
+    app.config['TESTING'] = True
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+    with app.test_client() as client:
+        with app.app_context():
+            db.create_all()
+            create_test_data()
+        yield client
+
+def create_test_data():
+    # 创建数据库表
+    db.create_all()
+
+    # 创建测试角色
+    role_patient = Role(rolename='patient')
+    role_doctor = Role(rolename='doctor')
+    db.session.add_all([role_patient, role_doctor])
+    db.session.commit()
+
+    # 创建测试用户
+    user_patient = Users(username='patient1', email='patient1@example.com', dob='1990-01-01', fullname='Patient One', password='password', gender='male')
+    user_doctor = Users(username='doctor1', email='doctor1@example.com', dob='1980-01-01', fullname='Doctor One', password='password', gender='female')
+    user_patient.roles.append(role_patient)
+    user_doctor.roles.append(role_doctor)
+    db.session.add_all([user_patient, user_doctor])
+    db.session.commit()
+
+def test_initialization(client):
+    # 在测试中使用测试数据
+    assert Role.query.count() == 2
+    assert Users.query.count() == 2
 
 def test_hello(test_client,app):
     print(app.url_map)
@@ -5,7 +40,7 @@ def test_hello(test_client,app):
     assert response.status_code == 200
     assert b"hello world" in response.data
 
-def test_add_user(test_client, init_database):
+def test_add_user(test_client):
     
     response = test_client.post('/api/users/add', json={
         'username': 'john',

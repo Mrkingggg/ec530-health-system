@@ -21,14 +21,14 @@ CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
 
 #connect to my database
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root1234@localhost:3306/HealthApp'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root1234@localhost:3306/HealthApp'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # if test: momery database.
-if os.getenv('FLASK_ENV') == 'development':
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root1234@localhost:3306/HealthApp'
-else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+# if os.getenv('FLASK_ENV') == 'development':
+#     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root1234@localhost:3306/HealthApp'
+# else:
+#     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['TESTING'] = True
