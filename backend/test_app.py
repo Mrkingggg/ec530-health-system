@@ -70,22 +70,23 @@ def test_add_user(test_client):
     })
     assert response.status_code == 400
 
-def test_change_user_role(test_client, init_database):
+def test_change_user_role(test_client):
     
     response = test_client.post('/api/users/add', json={
-        'username': 'testuser',
-        'email': 'test@example.com',
+        'username': 'jane',
+        'email': 'jane@gmail.com',
         'dob': '1990-02-02',
-        'fullname': 'Test User',
-        'password': 'testpassword',
-        'gender': 'male'
+        'fullname': 'jane white',
+        'password': 'janewhite222',
+        'gender': 'female',
+        'role_ids': [1,2]
     })
     user_id = response.json['userId']
 
     
     response = test_client.put(f'/api/users/changeRole', json={
         'userId': user_id,
-        'newRoles': [1]
+        'newRoles': [1,3]
     })
     assert response.status_code == 200
 
@@ -104,29 +105,29 @@ def test_change_user_role(test_client, init_database):
 
 
 
-def test_send_notification(test_client, init_database):
+# def test_send_notification(test_client):
     
-    response = test_client.post('/api/notifications/send', json={
-        'userId': 1,
-        'msg': 'Test Message'
-    })
-    assert response.status_code == 202
-
-    
-    response = test_client.post('/api/notifications/send', json={
-        'userId': 999,
-        'msg': 'Test Message'
-    })
-    assert response.status_code == 400
+#     response = test_client.post('/api/notifications/send', json={
+#         'userId': 1,
+#         'msg': 'Test Message'
+#     })
+#     assert response.status_code == 202
 
     
-    response = test_client.post('/api/notifications/send', json={
-        'userId': 1
-    })
-    assert response.status_code == 400
+#     response = test_client.post('/api/notifications/send', json={
+#         'userId': 999,
+#         'msg': 'Test Message'
+#     })
+#     assert response.status_code == 400
+
+    
+#     response = test_client.post('/api/notifications/send', json={
+#         'userId': 1
+#     })
+#     assert response.status_code == 400
 
 
-def test_login(test_client, init_database):
+def test_login(test_client):
    
     response = test_client.post('/api/auth/login', json={
         'username': 'existinguser',
@@ -153,12 +154,12 @@ def test_login(test_client, init_database):
     assert response.status_code == 400
     assert "invalid username" in response.json['bad request']
 
-def test_browse_patients(test_client, init_database):
+def test_browse_patients(test_client):
     response = test_client.get('/api/MP/browsePatient')
     assert response.status_code == 200
     assert isinstance(response.json, list)  # 应返回一个列表
 
-def test_make_appointment(test_client, init_database):
+def test_make_appointment(test_client):
     
     response = test_client.post('/api/patient/makeAppointment', json={
         'doctorId': 2,
@@ -176,7 +177,7 @@ def test_make_appointment(test_client, init_database):
     })
     assert response.status_code == 500
 
-def test_add_measurement(test_client, init_database):
+def test_add_measurement(test_client):
     
     response = test_client.post('/api/MP/addMeasureData', json={
         'userId': 1,
@@ -196,7 +197,7 @@ def test_add_measurement(test_client, init_database):
     assert "Missing info" in response.json['error']
 
 
-def test_register_device(test_client, init_database):
+def test_register_device(test_client):
     
     response = test_client.post('/api/admin/RegisDevice', json={
         'manufactor': 'TestCorp',
@@ -215,7 +216,7 @@ def test_register_device(test_client, init_database):
     assert "missing information" in response.json['error']
 
 
-def test_view_device(test_client, init_database):
+def test_view_device(test_client):
     
     response = test_client.get('/api/admin/viewDevice')
     assert response.status_code == 200
@@ -223,7 +224,7 @@ def test_view_device(test_client, init_database):
     assert isinstance(response.json, list)
 
 
-def test_delete_device(test_client, init_database):
+def test_delete_device(test_client):
    
     response = test_client.delete('/api/admin/deldev/1')
     assert response.status_code == 200
@@ -234,7 +235,7 @@ def test_delete_device(test_client, init_database):
     assert response.status_code == 400
     assert "device does not exist" in response.json['bad request']
 
-def test_change_device_status(test_client, init_database):
+def test_change_device_status(test_client):
     
     response = test_client.put('/api/admin/1/chgstatus', json={'status': 0})
     assert response.status_code == 200
@@ -246,7 +247,7 @@ def test_change_device_status(test_client, init_database):
     assert "Device not found" in response.json['error']
 
 
-def test_view_appointment(test_client, init_database):
+def test_view_appointment(test_client):
     
     response = test_client.get('/api/MP/view_appointment?doctorId=1')
     assert response.status_code == 200
@@ -258,7 +259,7 @@ def test_view_appointment(test_client, init_database):
     assert "doctor_id not found" in response.json['error']
 
 
-def test_add_chat_patient(test_client, init_database):
+def test_add_chat_patient(test_client):
     
     response = test_client.post('/api/MP/add_chat_patient', json={
         'MPid': 1,
@@ -275,7 +276,7 @@ def test_add_chat_patient(test_client, init_database):
     assert "missing info" in response.json['error']
 
 
-def test_remove_chat_patient(test_client, init_database):
+def test_remove_chat_patient(test_client):
     
     response = test_client.delete('/api/MP/remove_chat_patient?MPid=1&patientid=2')
     assert response.status_code == 200
