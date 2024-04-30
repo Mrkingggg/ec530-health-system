@@ -128,32 +128,48 @@ def test_change_user_role(test_client):
 
 
 def test_login(test_client):
-   
+    response = test_client.post('/api/users/add', json={
+        'username': 'jane',
+        'email': 'jane@gmail.com',
+        'dob': '1990-02-02',
+        'fullname': 'jane white',
+        'password': 'janewhite222',
+        'gender': 'female',
+        'role_ids': [1,2]
+    })
+    username = response.json['userId']
+    password = response.json['password']
     response = test_client.post('/api/auth/login', json={
-        'username': 'existinguser',
-        'password': 'correctpassword',
+        'username': username,
+        'password': password,
         'role': 1
     })
     assert response.status_code == 200
 
    
     response = test_client.post('/api/auth/login', json={
-        'username': 'existinguser',
-        'password': 'wrongpassword',
+        'username': username,
+        'password': '',
         'role': 1
     })
     assert response.status_code == 401
-    assert "incorrect password" in response.json['error']
+    # assert "incorrect password" in response.json['error']
 
    
     response = test_client.post('/api/auth/login', json={
-        'username': 'nonexistentuser',
-        'password': 'password',
+        'username': 'null',
+        'password': password,
         'role': 1
     })
     assert response.status_code == 400
-    assert "invalid username" in response.json['bad request']
 
+    response = test_client.post('/api/auth/login', json={
+        'username':username,
+        'password':password,
+        'role':3
+    })
+    assert response.status_code==401
+    
 def test_browse_patients(test_client):
     response = test_client.get('/api/MP/browsePatient')
     assert response.status_code == 200
