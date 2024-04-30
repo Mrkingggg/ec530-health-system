@@ -47,4 +47,4 @@ jobs:
       #     python3 ./mysite/manage.py test myapi -v 3
       - name: Test Queue
         run: |
-          pytest -k test_browse_patients backend/test_app.py
+          pytest -k test_make_appointment backend/test_app.py
