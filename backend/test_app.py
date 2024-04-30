@@ -202,7 +202,7 @@ def test_add_measurement(test_client):
         'measuretype': 'blood_pressure'
     })
     assert response.status_code == 200
-    assert "add measurement succeed" in response.json['message']
+    assert "add measurement succeed!" in response.json['message']
 
     
     response = test_client.post('/api/MP/addMeasureData', json={
