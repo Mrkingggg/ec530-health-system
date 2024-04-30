@@ -1,5 +1,5 @@
 import pytest
-from backend.app import app, db, Role, Users
+from app import app, db, Role, Users
 from datetime import datetime
 
 @pytest.fixture
