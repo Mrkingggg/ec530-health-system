@@ -442,7 +442,9 @@ def add_measurement():
     value = data.get('value')
     measuretime = data.get('measuretime')
     measuretype = data.get('measuretype')
-    
+
+    if None in [userId, deviceId, value, measuretime, measuretype]:
+        return jsonify({"error":"Missing info"}),400
     
     if len(measuretime) == 16:  
         measuretime += ':00'  
@@ -451,8 +453,7 @@ def add_measurement():
     except ValueError as ve:
         return jsonify({"error": "Incorrect date-time format. It should be ISO 8601 format with optional seconds (YYYY-MM-DDTHH:MM[:SS])."}), 400
 
-    if None in [userId, deviceId, value, met, measuretype]:
-        return jsonify({"error":"Missing info"}),400
+    
     
     try:
         measurement = Measurements(userId=userId, deviceId=deviceId, value=value, measuretime=met, measuretype=measuretype)
