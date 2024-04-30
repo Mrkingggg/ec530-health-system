@@ -137,18 +137,17 @@ def test_login(test_client):
         'gender': 'female',
         'role_ids': [1,2]
     })
-    username = response.json['username']
-    password = response.json['password']
+    
     response = test_client.post('/api/auth/login', json={
-        'username': username,
-        'password': password,
+        'username': 'jane',
+        'password': 'janewhite222',
         'role': 1
     })
     assert response.status_code == 200
 
    
     response = test_client.post('/api/auth/login', json={
-        'username': username,
+        'username': 'jane',
         'password': '',
         'role': 1
     })
@@ -158,14 +157,14 @@ def test_login(test_client):
    
     response = test_client.post('/api/auth/login', json={
         'username': 'null',
-        'password': password,
+        'password': 'janewhite222',
         'role': 1
     })
     assert response.status_code == 400
 
     response = test_client.post('/api/auth/login', json={
-        'username':username,
-        'password':password,
+        'username':'jane',
+        'password':'janewhite222',
         'role':3
     })
     assert response.status_code==401
