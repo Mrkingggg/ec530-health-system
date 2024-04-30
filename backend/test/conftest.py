@@ -4,7 +4,7 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 from backend.app import Users, create_app, db, app
-
+from datetime import datetime
 
 @pytest.fixture(scope='module')
 def app():
@@ -30,8 +30,8 @@ def init_database(app):
     """初始化测试数据库，包括添加初始数据"""
     with app.app_context():  # 确保所有数据库操作都在应用上下文中执行
         # 创建和提交用户数据
-        user1 = Users(username='testuser1', email='test1@example.com', dob='1990-01-01', fullname='Test User 1', password='hashed_password', gender='male')
-        user2 = Users(username='testuser2', email='test2@example.com', dob='1990-02-02', fullname='Test User 2', password='hashed_password', gender='female')
+        user1 = Users(username='testuser1', email='test1@example.com', dob=datetime.strptime('1990-01-01', '%Y-%m-%d').date(), fullname='Test User 1', password='hashed_password', gender='male')
+        user2 = Users(username='testuser2', email='test2@example.com', dob=datetime.strptime('1990-02-02', '%Y-%m-%d').date(), fullname='Test User 2', password='hashed_password', gender='female')
         db.session.add(user1)
         db.session.add(user2)
         db.session.commit()
