@@ -1,5 +1,6 @@
 import pytest
 from app import app, db, Role, Users
+from datetime import datetime
 
 @pytest.fixture
 def client():
@@ -22,8 +23,8 @@ def create_test_data():
     db.session.commit()
 
     # 创建测试用户
-    user_patient = Users(username='patient1', email='patient1@example.com', dob='1990-01-01', fullname='Patient One', password='password', gender='male')
-    user_doctor = Users(username='doctor1', email='doctor1@example.com', dob='1980-01-01', fullname='Doctor One', password='password', gender='female')
+    user_patient = Users(username='patient1', email='patient1@example.com', dob=datetime(1900,1,1), fullname='Patient One', password='password', gender='male')
+    user_doctor = Users(username='doctor1', email='doctor1@example.com', dob=datetime(1980,11,24), fullname='Doctor One', password='password', gender='female')
     user_patient.roles.append(role_patient)
     user_doctor.roles.append(role_doctor)
     db.session.add_all([user_patient, user_doctor])
@@ -45,7 +46,7 @@ def test_add_user(test_client):
     response = test_client.post('/api/users/add', json={
         'username': 'john',
         'email': 'john@example.com',
-        'dob': '1990-01-01',
+        'dob': datetime(1990, 1, 1).isoformat(),
         'fullname': 'John Doe',
         'password': '123456',
         'gender': 'male'
@@ -62,7 +63,7 @@ def test_add_user(test_client):
     response = test_client.post('/api/users/add', json={
         'username': 'john',
         'email': 'johnny@example.com',
-        'dob': '1990-01-02',
+        'dob': datetime(1990,1,2).isoformat(),
         'fullname': 'Johnny Doe',
         'password': 'abcdef',
         'gender': 'male'
