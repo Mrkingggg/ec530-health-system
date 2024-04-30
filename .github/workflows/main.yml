@@ -48,4 +48,4 @@ jobs:
       - name: Test Queue
         run: |
           pytest backend/test_notification_queue.py 
-          pytest -k test_add_user backend/test_app.py
+          pytest -k test_add_user test_change_user_role backend/test_app.py
