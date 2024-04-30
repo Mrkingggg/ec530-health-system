@@ -23,8 +23,8 @@ def create_test_data():
     db.session.commit()
 
     # 创建测试用户
-    user_patient = Users(username='patient1', email='patient1@example.com', dob=datetime(1900,1,1), fullname='Patient One', password='password', gender='male')
-    user_doctor = Users(username='doctor1', email='doctor1@example.com', dob=datetime(1980,11,24), fullname='Doctor One', password='password', gender='female')
+    user_patient = Users(username='patient1', email='patient1@example.com', dob=datetime(1900,1,1).isoformat(), fullname='Patient One', password='password', gender='male')
+    user_doctor = Users(username='doctor1', email='doctor1@example.com', dob=datetime(1980,11,24).isoformat(), fullname='Doctor One', password='password', gender='female')
     user_patient.roles.append(role_patient)
     user_doctor.roles.append(role_doctor)
     db.session.add_all([user_patient, user_doctor])
