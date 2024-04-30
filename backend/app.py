@@ -414,7 +414,7 @@ def make_appointment():
         return jsonify({"message":"appointment scheduled!"}),200
     except ValueError as e:
         db.session.rollback()
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), 404
     
 
 @app.route('/api/MP/view_appointment', methods=['GET'])
