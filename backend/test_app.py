@@ -46,7 +46,7 @@ def test_add_user(test_client):
     response = test_client.post('/api/users/add', json={
         'username': 'john',
         'email': 'john@example.com',
-        'dob': datetime.strptime('1990-01-01T00:00:00','%Y-%m-%dT%H:%M:%S'),
+        'dob': datetime.strptime('1990-01-01T00:00:00','%Y-%m-%dT%H:%M:%S').isoformat(),
         'fullname': 'John Doe',
         'password': '123456',
         'gender': 'male'
