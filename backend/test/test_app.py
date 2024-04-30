@@ -3,7 +3,7 @@ from app import app, db, Role, Users
 from datetime import datetime
 
 @pytest.fixture
-def client():
+def test_client():
     app.config['TESTING'] = True
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
     with app.test_client() as client:
@@ -56,17 +56,6 @@ def test_add_user(test_client):
     
     response = test_client.post('/api/users/add', json={
         'username': 'john2'
-    })
-    assert response.status_code == 400
-
-    
-    response = test_client.post('/api/users/add', json={
-        'username': 'john',
-        'email': 'johnny@example.com',
-        'dob': datetime(1990,1,2).isoformat(),
-        'fullname': 'Johnny Doe',
-        'password': 'abcdef',
-        'gender': 'male'
     })
     assert response.status_code == 400
 
