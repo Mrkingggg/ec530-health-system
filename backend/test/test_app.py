@@ -1,5 +1,6 @@
 
-def test_hello(test_client):
+def test_hello(test_client,app):
+    print(app.url_map)
     response = test_client.get('/api/users/hello')
     assert response.status_code == 200
     assert b"hello world" in response.data
