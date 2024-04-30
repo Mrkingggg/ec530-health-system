@@ -200,7 +200,7 @@ def chg_role():
     userId = data.get('userId')
     newRoles = data.get('newRoles',[])
     if not all([userId, newRoles]):
-        return jsonify({"bad requests":"missing components"}),400
+        return jsonify({"bad requests":"missing components"}),404
     
     try:
         usr = Users.query.get_or_404(userId)
