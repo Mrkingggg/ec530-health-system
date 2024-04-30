@@ -189,9 +189,10 @@ def add_user():
 
         db.session.commit()
         return jsonify({"message": "User added successfully", "userId": user.userId}), 201
-    except Exception as e:
+    except ValueError as e:
         db.session.rollback()
-        return jsonify({"error": e}), 500
+        return jsonify({"error": str(e)}), 500
+    
 
 @app.route('/api/users/changeRole', methods=['PUT'])
 def chg_role():
