@@ -30,13 +30,13 @@ def create_test_data():
     db.session.add_all([user_patient, user_doctor])
     db.session.commit()
 
-def test_initialization(client):
+def test_initialization(test_client):
     # 在测试中使用测试数据
     assert Role.query.count() == 2
     assert Users.query.count() == 2
 
-def test_hello(test_client,app):
-    print(app.url_map)
+def test_hello(test_client):
+    # print(app.url_map)
     response = test_client.get('/api/users/hello')
     assert response.status_code == 200
     assert b"hello world" in response.data
