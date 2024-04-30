@@ -23,8 +23,8 @@ def create_test_data():
     db.session.commit()
 
     # 创建测试用户
-    user_patient = Users(username='patient1', email='patient1@example.com', dob=datetime(1900,1,1).isoformat(), fullname='Patient One', password='password', gender='male')
-    user_doctor = Users(username='doctor1', email='doctor1@example.com', dob=datetime(1980,11,24).isoformat(), fullname='Doctor One', password='password', gender='female')
+    user_patient = Users(username='patient1', email='patient1@example.com', dob=datetime.strptime('1900-01-01T00:00:00', '%Y-%m-%dT%H:%M:%S'), fullname='Patient One', password='password', gender='male')
+    user_doctor = Users(username='doctor1', email='doctor1@example.com', dob=datetime.strptime('1980-11-24T00:00:00', '%Y-%m-%dT%H:%M:%S'), fullname='Doctor One', password='password', gender='female')
     user_patient.roles.append(role_patient)
     user_doctor.roles.append(role_doctor)
     db.session.add_all([user_patient, user_doctor])
@@ -46,7 +46,7 @@ def test_add_user(test_client):
     response = test_client.post('/api/users/add', json={
         'username': 'john',
         'email': 'john@example.com',
-        'dob': datetime(1990, 1, 1).isoformat(),
+        'dob': datetime.strptime('1990-01-01T00:00:00','%Y-%m-%dT%H:%M:%S'),
         'fullname': 'John Doe',
         'password': '123456',
         'gender': 'male'
