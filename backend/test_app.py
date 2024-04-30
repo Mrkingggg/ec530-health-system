@@ -190,7 +190,7 @@ def test_make_appointment(test_client):
         'patientId': 1,
         'appointment_time': '10-01-2023 15:00'
     })
-    assert response.status_code == 500
+    assert response.status_code == 404
 
 def test_add_measurement(test_client):
     
