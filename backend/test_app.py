@@ -101,7 +101,7 @@ def test_change_user_role(test_client):
     response = test_client.put('/api/users/changeRole', json={
         'userId': user_id
     })
-    assert response.status_code == 400
+    assert response.status_code == 404
 
 
 

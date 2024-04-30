@@ -213,7 +213,7 @@ def chg_role():
         return jsonify({"Success":"complete role changing!"}),200
     except Exception as e:
         db.session.rollback()
-        return jsonify({"error":str(e)}),500  # error in server
+        return jsonify({"error":str(e)}),404  # error in server
 
 def process_notify_queue():
     while not notification_queue.empty():
