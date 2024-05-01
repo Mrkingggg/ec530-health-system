@@ -132,18 +132,25 @@ def test_change_user_role(test_client):
 
 
 def test_login(test_client):
-    response = test_client.post('/api/users/add', json={
-        'username': 'jane',
-        'email': 'jane@gmail.com',
-        'dob': '1990-02-02',
-        'fullname': 'jane white',
-        'password': 'janewhite222',
-        'gender': 'female',
-        'role_ids': [1,2]
-    })
+    # response = test_client.post('/api/users/add', json={
+    #     'username': 'jane',
+    #     'email': 'jane@gmail.com',
+    #     'dob': '1990-02-02',
+    #     'fullname': 'jane white',
+    #     'password': 'janewhite222',
+    #     'gender': 'female',
+    #     'role_ids': [1,2]
+    # })
     hashed_password = generate_password_hash('janewhite222', method='pbkdf2')
-    user = Users(username='jane', password=hashed_password, role=1)
+    user = Users(username='jane', email='jane@gmail.com', dob='1990-02-02', fullname='jane white', password = hashed_password, gender='female')
     db.session.add(user)
+    db.session.flush() # assign id ?
+    role_ids=[1,2]
+    for role_id in role_ids:
+        role = Role.query.get(role_id)
+        if role:
+            user.roles.append(role)
+
     db.session.commit()
 
     response = test_client.post('/api/auth/login', json={
