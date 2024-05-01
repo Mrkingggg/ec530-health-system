@@ -144,8 +144,8 @@ def test_login(test_client):
 
     response = test_client.post('/api/auth/login', json={
         'username': 'jane',
-        'inputpsw': 'janewhite222',  
-        'sel_role': 1
+        'password': 'janewhite222',  
+        'role': 1
     })
     
     assert response.status_code == 200
