@@ -25,7 +25,6 @@
 
 ![regis_dev](https://github.com/Mrkingggg/ec530-health-system/assets/105716817/4df27147-7530-4a4f-aac5-7abdbcf6dd21)
 
-
 3. Authentication Authorization:
    - Login:
      - Post: url: /api/auth/login
@@ -109,62 +108,57 @@
        <br/>
        <img width="1312" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/9524955e-6a4e-4730-84d8-7fb6b79d02e0">
 
-
 10. Browse all patients
+
     - GET: /api/MP/browsePatient <br/>
       API test:
       <img width="792" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/b2c28db0-5318-4f89-be55-78bad4766efe">
 
-
 11. Make Appointments:
-   - POST: /api/patient/makeAppointment
 
+- POST: /api/patient/makeAppointment
 
 12. View Appointments:
-   - GET: /api/MP/view_appointment
-   <img width="1043" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/7e4c98bb-30aa-4efd-822e-97c1ca2a48ef">
 
+- GET: /api/MP/view_appointment
+  <img width="1043" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/7e4c98bb-30aa-4efd-822e-97c1ca2a48ef">
 
 13. Add Measurement data:
-   - POST: /api/MP/addMeasureData
-14. View Latest Measurement Report ( All Measurements up to date)
-   - GET: /api/patient/view_measurements/<int:user_id>
 
+- POST: /api/MP/addMeasureData
+
+14. View Latest Measurement Report ( All Measurements up to date)
+
+- GET: /api/patient/view_measurements/<int:user_id>
 
    <img width="1048" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/eb45f653-6b5f-49c9-a12d-fcb9182885e1">
 
-
-
 15. Add New Chat with patients
-   - POST: /api/MP/add_chat_patient
 
+- POST: /api/MP/add_chat_patient
 
    <img width="1045" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/fd0596d8-5d2d-4cf0-ba89-e11d11832147">
 
-
-
 16. Remove A Chat with patient
-   - DELETE: /api/MP/remove_chat_patient
-   <img width="1050" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/786f22bf-3e0f-40ba-96f4-9d0b6ee3c862">
 
+- DELETE: /api/MP/remove_chat_patient
+  <img width="1050" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/786f22bf-3e0f-40ba-96f4-9d0b6ee3c862">
 
 17. View Chat List
-   - GET: /api/gen/view_chat_pairs/<int:user_id>
-   <img width="1054" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/a1dc878c-4470-456f-9125-2cc71330fce4">
 
+- GET: /api/gen/view_chat_pairs/<int:user_id>
+  <img width="1054" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/a1dc878c-4470-456f-9125-2cc71330fce4">
 
 18. View Chat History
-   - GET: /api/gen/view_chat_history
-   <img width="1053" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/daec2d45-64ec-40d1-ab26-6dd7eed56fe7">
 
-
+- GET: /api/gen/view_chat_history
+  <img width="1053" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/daec2d45-64ec-40d1-ab26-6dd7eed56fe7">
 
 19. Send and Store Messages to Database
-   - POST: /api/gen/send_store_message
+
+- POST: /api/gen/send_store_message
 
    <img width="579" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/61e54a4a-43c8-4547-ae2f-e3e8ae786524">
-
-
 
 ## Database Schema -- relational sql ( in dbschema.sql )
 
@@ -200,27 +194,26 @@
    - status
 
 5. table Measurements:
+
    - MeasurementId: int(primary key)
    - deviceId: int ( deviceId from table device )
    - userId: int (userId from table users)
    - value: float
    - measuretime: datetime
 
-
 6. table appointments:
+
    - appointmentId: int (PM)
    - patientId
    - doctorId
    - appointmentTime
    - status
 
-
 7. Table ChatPairs:
+
    - pairid int PK
    - MPid int
    - patientid int
-
-
 
 8. Table ChatHisroty:
    - msgid int PK
@@ -230,8 +223,6 @@
    - sendtime datetime
    - status enum('sent','unsent')
    - direction enum('recv','send')
-
-
 
 ## app.py （ /backend/app.py ）
 
@@ -302,8 +293,7 @@ More results screenshots in /screenshot.
 1. Create new accounts.
    Fill all fields ( role's field is multiple selection ). Click Add User and jump to login page.
 
-   ![create_user](https://github.com/Mrkingggg/ec530-health-system/assets/105716817/5c6404ff-a19d-4c8d-b755-738b02cde618)
-
+![create_user](https://github.com/Mrkingggg/ec530-health-system/assets/105716817/5c6404ff-a19d-4c8d-b755-738b02cde618)
 
 <br/>
 <br/>
@@ -316,7 +306,6 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
 - Create a new account: jump to create page.
 
 <img src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/87a15603-161e-4751-ab84-1ee434b0a88f" width="600" height="400" alt="home_page">
-
 
 <br/>
 
@@ -333,7 +322,6 @@ Different Roles jump to corresponding pages. Start with Login or Create an acoou
 <br/>
 Admin User Stories:
 
-
 - Add users to the system:
 - Users should be added to the system and cannot register before being added to the system
 - Assign and Change Roles to users( A user can have different roles, e.g.,
@@ -341,39 +329,27 @@ Admin User Stories:
 - A user can be a family member and/or a patient
 - Provide interfaces to third party medical device makers (Thermometer, Pulse, Blood pressure, Glucometer, etc.) to have their devices feed data to the system
 - Ability to disable or enable any device maker or application developer
- <br/>
+  <br/>
 
 ### MP(Doctor/Nurse) Functions:
 
 1. Browse Patients<br/>
 
-
    <img width="1224" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/61c9fce0-f015-4097-bc17-22c48b4c58ce">
-
-
 
 2. Browse appointments / Add Latest Patient Measurement Data<br/>
 
-
    <img width="1071" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/df97cd51-e6c0-4b42-b9cd-74f001ad4b62">
-
 
 3. Browse All Chats with different patients. / Add new chats with patients.
 
-
    <img width="1296" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/d250ca06-4687-4c24-b163-a59c6dc0bcdd">
-
-
 
 4. View chatting history in detail by clicking different chats.
 
-
    <img width="1338" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/c9dceb4e-fd3f-42cd-8c2e-388e305f7218">
 
-
-
 <br/>
-
 
 ### Patient Functions:
 
@@ -384,35 +360,26 @@ Admin User Stories:
 
 <img width="1392" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/8f58caf1-132d-4de2-923e-2fddbc2f8174">
 
-
-
 <img width="1032" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/09afebdd-e0a2-4228-aae8-47dcff2ce96d">
-
-
 
 <img width="1363" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/53b2467e-e5ba-4c0b-8b91-97395b1d0de2">
 
-### Integrate Tests /backend/test/test_app.py
+### Integrate Tests /backend/test_app.py, /backend/test_notification_queue.py, /backend/test_report_queue.py
 
 ## Hello App Framework
 
 1. helloapp() function in app.py. Definition of helloapp API, return a message of hello app.
-<br/>
+   <br/>
 
 <img width="435" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/2f649a25-7bd2-470f-9d7d-894bb4efbc76">
 
-
 2. fetch this api response in HelloApp.js
-
 
 <img width="596" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/33981dc7-36d2-43c1-b1bf-5e755e218407">
 
-
 3. add HelloApp.js to homepage.
-
 
 <img width="652" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/391f7dc4-5595-4b09-960f-320c208f486c">
 <br/>
 
 <img width="1439" alt="image" src="https://github.com/Mrkingggg/ec530-health-system/assets/105716817/1ddaf1c6-e833-42d5-970f-e6ede30ca768">
-
