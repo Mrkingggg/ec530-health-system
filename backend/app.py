@@ -320,7 +320,7 @@ def login():
         }), 200
     
     else:
-        return jsonify({"error": "User does not have the selected role"}), 401
+        return jsonify({"error": "User does not have the selected role"}), 402
 
 @app.route('/api/auth/logout', methods=['POST'])
 def logout():
