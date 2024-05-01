@@ -275,7 +275,12 @@ def test_delete_device(test_client):
     assert "device does not exist" in response.json['bad request']
 
 def test_change_device_status(test_client):
-    
+    response = test_client.post('/api/admin/RegisDevice', json={
+        'manufactor': 'TestCorp',
+        'devType': 'Heart Monitor',
+        'status': 1,
+        'unit': 'bpm'
+    })
     response = test_client.put('/api/admin/1/chgstatus', json={'status': 0})
     assert response.status_code == 200
     assert "Device status updated" in response.json['message']
