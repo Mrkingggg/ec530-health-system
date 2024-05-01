@@ -163,7 +163,7 @@ def test_login(test_client):
         'password': 'janewhite222',
         'role': 1
     })
-    assert response.status_code == 400
+    assert response.status_code == 401
 
     response = test_client.post('/api/auth/login', json={
         'username':'jane',
