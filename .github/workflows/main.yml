@@ -48,3 +48,4 @@ jobs:
       - name: Test Queue
         run: |
           pytest -k test_login backend/test_app.py
+          pytest backend/test_report_queue.py

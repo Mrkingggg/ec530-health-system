@@ -1,6 +1,7 @@
 import pytest
 from app import app, db, Role, Users
 from datetime import datetime
+from werkzeug.security import generate_password_hash,check_password_hash
 
 @pytest.fixture
 def test_client():
@@ -140,13 +141,20 @@ def test_login(test_client):
         'gender': 'female',
         'role_ids': [1,2]
     })
-    
+    hashed_password = generate_password_hash('janewhite222', method='pbkdf2')
+    user = Users(username='jane', password=hashed_password, role=1)
+    db.session.add(user)
+    db.session.commit()
+
     response = test_client.post('/api/auth/login', json={
         'username': 'jane',
-        'password': 'janewhite222',
+        'password': 'janewhite222',  
         'role': 1
     })
+
+    
     assert response.status_code == 200
+    
 
    
     response = test_client.post('/api/auth/login', json={
