@@ -297,7 +297,7 @@ def test_view_appointment(test_client):
         'patientId': 1,
         'appointment_time': '2023-10-01T15:00:00'
     })
-    
+
     response = test_client.get('/api/MP/view_appointment?doctorId=1')
     assert response.status_code == 200
     assert isinstance(response.json, list)  
@@ -326,7 +326,10 @@ def test_add_chat_patient(test_client):
 
 
 def test_remove_chat_patient(test_client):
-    
+    response = test_client.post('/api/MP/add_chat_patient', json={
+        'MPid': 1,
+        'patientid': 2
+    })
     response = test_client.delete('/api/MP/remove_chat_patient?MPid=1&patientid=2')
     assert response.status_code == 200
     assert "delete this chat pair" in response.json['message']
