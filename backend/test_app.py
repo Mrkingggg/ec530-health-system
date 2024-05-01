@@ -158,7 +158,6 @@ def test_login(test_client):
    
     response = test_client.post('/api/auth/login', json={
         'username': 'jane',
-        'inputpsw': '',
         'sel_role': 1
     })
     assert response.status_code == 401
@@ -166,7 +165,6 @@ def test_login(test_client):
 
    
     response = test_client.post('/api/auth/login', json={
-        'username': 'null',
         'inputpsw': 'janewhite222',
         'sel_role': 1
     })
