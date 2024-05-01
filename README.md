@@ -275,6 +275,20 @@ The notification queue system in the Flask application handles asynchronous noti
 
 <img width="1109" alt="image" src="https://github.com/Mrkingggg/ec530-proj2/assets/105716817/aac6e0ae-f83a-4444-bc00-a71c7ad1c1ff">
 
+
+### Integrate Tests for APIs (/backend/test_app.py, /backend/test_notification_queue.py, /backend/test_report_queue.py)
+
+
+<img width="680" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/4c69d275-3db7-4d53-ac8c-d6ed836d1318">
+
+
+<img width="608" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/cf5318d1-bd2c-4ead-8b87-98c3584b21ed">
+
+
+<img width="612" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/ab5c40b9-21fa-495f-a72d-25221244969c">
+
+
+
 #### gitc cmd with remote repos:
 
 - git clone URL
@@ -364,7 +378,6 @@ Admin User Stories:
 
 <img width="1363" alt="image" src="https://github.com/Mrkingggg/health-system/assets/105716817/53b2467e-e5ba-4c0b-8b91-97395b1d0de2">
 
-### Integrate Tests /backend/test_app.py, /backend/test_notification_queue.py, /backend/test_report_queue.py
 
 ## Hello App Framework
 
