@@ -292,6 +292,11 @@ def test_change_device_status(test_client):
 
 
 def test_view_appointment(test_client):
+    response = test_client.post('/api/patient/makeAppointment', json={
+        'doctorId': 2,
+        'patientId': 1,
+        'appointment_time': '2023-10-01T15:00:00'
+    })
     
     response = test_client.get('/api/MP/view_appointment?doctorId=1')
     assert response.status_code == 200
