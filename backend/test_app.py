@@ -232,7 +232,13 @@ def test_register_device(test_client):
 
 
 def test_view_device(test_client):
-    
+    response = test_client.post('/api/admin/RegisDevice', json={
+        'manufactor': 'TestCorp',
+        'devType': 'Heart Monitor',
+        'status': 0,
+        'unit': 'bpm'
+    })
+
     response = test_client.get('/api/admin/viewDevice')
     assert response.status_code == 200
     
