@@ -144,7 +144,7 @@ def test_login(test_client):
 
     response = test_client.post('/api/auth/login', json={
         'username': 'jane',
-        'password': generate_password_hash('janewhite222', method='pbkdf2'),  
+        'password': 'janewhite222',
         'role': 1
     })
     
