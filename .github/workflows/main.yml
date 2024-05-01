@@ -47,6 +47,6 @@ jobs:
       #     python3 ./mysite/manage.py test myapi -v 3
       - name: Test Queue
         run: |
-          pytest -k test_login backend/test_app.py
+          pytest backend/test_app.py
           pytest backend/test_report_queue.py
           pytest backend/test_notification_queue.py
