@@ -238,6 +238,12 @@ def test_view_device(test_client):
         'status': 0,
         'unit': 'bpm'
     })
+    response = test_client.post('/api/admin/RegisDevice', json={
+        'manufactor': 'TestCorp1',
+        'devType': 'Heart Monitor',
+        'status': 0,
+        'unit': 'bpm'
+    })
 
     response = test_client.get('/api/admin/viewDevice')
     assert response.status_code == 200
@@ -246,7 +252,14 @@ def test_view_device(test_client):
 
 
 def test_delete_device(test_client):
-   
+
+    response = test_client.post('/api/admin/RegisDevice', json={
+        'manufactor': 'TestCorp',
+        'devType': 'Heart Monitor',
+        'status': 0,
+        'unit': 'bpm'
+    })
+
     response = test_client.delete('/api/admin/deldev/1')
     assert response.status_code == 200
     assert "Device deleted successfully" in response.json['message']
