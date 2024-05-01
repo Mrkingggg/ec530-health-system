@@ -13,16 +13,16 @@ def test_client():
         yield client
 
 def create_test_data():
-    # 创建数据库表
+    
     db.create_all()
 
-    # 创建测试角色
+    
     role_patient = Role(rolename='patient')
     role_doctor = Role(rolename='doctor')
     db.session.add_all([role_patient, role_doctor])
     db.session.commit()
 
-    # 创建测试用户
+    
     user_patient = Users(username='patient1', email='patient1@example.com', dob=datetime.strptime('1900-01-01T00:00:00', '%Y-%m-%dT%H:%M:%S'), fullname='Patient One', password='password', gender='male')
     user_doctor = Users(username='doctor1', email='doctor1@example.com', dob=datetime.strptime('1980-11-24T00:00:00', '%Y-%m-%dT%H:%M:%S'), fullname='Doctor One', password='password', gender='female')
     user_patient.roles.append(role_patient)
@@ -31,7 +31,7 @@ def create_test_data():
     db.session.commit()
 
 def test_initialization(test_client):
-    # 在测试中使用测试数据
+    
     assert Role.query.count() == 2
     assert Users.query.count() == 2
 
