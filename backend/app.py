@@ -298,7 +298,9 @@ def login():
 
     if user is None:
         return jsonify({"bad request": "invalid username"}), 400
-
+    if user.password is None:
+        return jsonify({"error":"missing password"}),401
+    
     hashpsw = user.password
     check = check_password_hash(hashpsw, inputpsw)
 
