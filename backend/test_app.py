@@ -150,6 +150,9 @@ def test_login(test_client):
     })
     
     assert response.status_code == 200
+    data = response.json
+    assert 'user_roles' in data
+    assert 1 in data['user_roles']
     
 
    
