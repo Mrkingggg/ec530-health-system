@@ -252,7 +252,12 @@ def test_view_device(test_client):
 
 
 def test_delete_device(test_client):
-
+    response = test_client.post('/api/admin/RegisDevice', json={
+        'manufactor': 'TestCorp1',
+        'devType': 'Heart Monitor',
+        'status': 0,
+        'unit': 'bpm'
+    })
     response = test_client.post('/api/admin/RegisDevice', json={
         'manufactor': 'TestCorp',
         'devType': 'Heart Monitor',
