@@ -305,7 +305,6 @@ def login():
     if not check:
         return jsonify({"error": "incorrect password"}), 401
 
-    # 检查用户是否有特定的角色
     user_roles = [role.roleId for role in user.roles]
     # print("User roles:", user_roles)s
     if int(sel_role) in user_roles:
