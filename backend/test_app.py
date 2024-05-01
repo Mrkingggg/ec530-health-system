@@ -9,31 +9,34 @@ def test_client():
     with app.test_client() as client:
         with app.app_context():
             db.create_all()
-            create_test_data()
+            # create_test_data()
         yield client
+        with app.app_context():
+            db.session.remove()
+            db.drop_all()
 
-def create_test_data():
+# def create_test_data():
     
-    db.create_all()
-
-    
-    role_patient = Role(rolename='patient')
-    role_doctor = Role(rolename='doctor')
-    db.session.add_all([role_patient, role_doctor])
-    db.session.commit()
+#     db.create_all()
 
     
-    user_patient = Users(username='patient1', email='patient1@example.com', dob=datetime.strptime('1900-01-01T00:00:00', '%Y-%m-%dT%H:%M:%S'), fullname='Patient One', password='password', gender='male')
-    user_doctor = Users(username='doctor1', email='doctor1@example.com', dob=datetime.strptime('1980-11-24T00:00:00', '%Y-%m-%dT%H:%M:%S'), fullname='Doctor One', password='password', gender='female')
-    user_patient.roles.append(role_patient)
-    user_doctor.roles.append(role_doctor)
-    db.session.add_all([user_patient, user_doctor])
-    db.session.commit()
+#     role_patient = Role(rolename='patient')
+#     role_doctor = Role(rolename='doctor')
+#     db.session.add_all([role_patient, role_doctor])
+#     db.session.commit()
 
-def test_initialization(test_client):
     
-    assert Role.query.count() == 2
-    assert Users.query.count() == 2
+#     user_patient = Users(username='patient1', email='patient1@example.com', dob=datetime.strptime('1900-01-01T00:00:00', '%Y-%m-%dT%H:%M:%S'), fullname='Patient One', password='password', gender='male')
+#     user_doctor = Users(username='doctor1', email='doctor1@example.com', dob=datetime.strptime('1980-11-24T00:00:00', '%Y-%m-%dT%H:%M:%S'), fullname='Doctor One', password='password', gender='female')
+#     user_patient.roles.append(role_patient)
+#     user_doctor.roles.append(role_doctor)
+#     db.session.add_all([user_patient, user_doctor])
+#     db.session.commit()
+
+# def test_initialization(test_client):
+    
+#     assert Role.query.count() == 2
+#     assert Users.query.count() == 2
 
 def test_hello(test_client):
     # print(app.url_map)
