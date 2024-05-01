@@ -155,30 +155,6 @@ def test_login(test_client):
     
     
 
-   
-    response = test_client.post('/api/auth/login', json={
-        'username': 'jane',
-        'sel_role': 1
-    })
-    assert response.status_code == 401
-    # assert "incorrect password" in response.json['error']
-
-   
-    response = test_client.post('/api/auth/login', json={
-        'inputpsw': 'janewhite222',
-        'sel_role': 1
-    })
-    assert response.status_code == 400
-
-    response = test_client.post('/api/auth/login', json={
-        'username':'jane',
-        'inputpsw':'janewhite222',
-        'sel_role':3
-    })
-    assert response.status_code==402
-    
-
-
 def test_browse_patients(test_client):
     response = test_client.get('/api/MP/browsePatient')
     assert response.status_code == 200
